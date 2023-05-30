@@ -18,6 +18,10 @@ if (isset($_POST["send"])) {
     }
 }
 
+$akiyama = "INSERT INTO Akiyama (age, worries)
+values()";
+$felix ="INSERT INTO Felix (firstname, lastname, email)"
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
