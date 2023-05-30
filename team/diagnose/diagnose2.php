@@ -1,12 +1,16 @@
 <?php
-// session_start();
+session_start();
 $result = "";
+
 if (isset($_POST['man'])) {
-    $result = $_POST['man'];
+    $_SESSION["man"] = $_POST["man"];
+    $result = $_SESSION['man'];
 }elseif(isset($_POST['woman'])){
-    $result = $_POST['woman'];
+    $_SESSION["woman"] = $_POST["woman"];
+    $result = $_SESSION['woman'];
 }elseif(isset($_POST['other'])){
-    $result = $_POST['other'];
+    $_SESSION["other"] = $_POST["other"];
+    $result = $_SESSION['other'];
 }
 echo $result
 ?>
@@ -20,7 +24,7 @@ echo $result
     <title>Document</title>
 </head>
 <body>
-<!-- <form method="post" action="/diagnose/diagnose3.php"> -->
+<form method="post" action="/diagnose/diagnose3.php">
     <p>あなたの年齢は？</p>
     <select name = "age">
     <?php for ($i=18; $i<=99; $i++) : ?>
