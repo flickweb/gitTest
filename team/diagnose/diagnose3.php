@@ -10,7 +10,7 @@
 
 <body>
     <p>担当のカウンセラー</p>
-    <form method="post" action="/diagnose/diagnose2.php">
+    <form method="post" action="/diagnose/diagnose4.php">
         <a href="/diagnose/diagnose2.php"><button type="submit" name="man" value="1">男性</button></a><br>
         <a href="/diagnose/diagnose2.php"><button type="submit" name="woman" value="2">女性</button></a><br>
         <a href="/diagnose/diagnose2.php"><button type="submit" name="other" value="3">どちらでも</button></a><br>
