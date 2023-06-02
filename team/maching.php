@@ -9,14 +9,16 @@ include_once 'dbConnect.php';
 
 <body>
     <?php
+
     $sql = "SELECT causer.name
-    from scategory
-    inner join cacategory on scategory.ctnum = cacategory.ctnum
-    inner join causer on cacategory.caid = causer.caid
-    where scategory.sid = 2";
-    //ログイン情報があったら使う    
-    //where scategory.sid = " .$sid;
+             from scategory
+             inner join cacategory on scategory.ctnum = cacategory.ctnum
+             inner join causer on cacategory.caid = causer.caid
+             where scategory.sid = 2";
+            //ログイン情報があったら使う    
+            //where scategory.sid = " .$sid;
     
+
     if ($result = mysqli_query($conn, $sql)) {
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
