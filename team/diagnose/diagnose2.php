@@ -24,7 +24,7 @@ echo $result
     <title>Document</title>
 </head>
 <body>
-<form method="post" action="/diagnose/diagnose3.php">
+<form method="post" action="team/diagnose/diagnose3.php">
     <p>あなたの年齢は？</p>
     <select name = "age">
     <?php for ($i=18; $i<=99; $i++) : ?>

@@ -24,7 +24,7 @@ echo $result;
 </head>
 
 <body>
-    <form method="post" action="/maching.php">
+    <form method="post" action="team/maching.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
             <input type="checkbox" name="worries[]" value="1">恋愛<br>
             <input type="checkbox" name="worries[]" value="2">家族・親族<br>
