@@ -1,27 +1,17 @@
 <?php
-if (isset($_POST['age'])) {
-    echo $_POST['age'];
+session_start();
+
+if (isset($_POST['caman'])) {
+    $_SESSION["caman"] = $_POST["caman"];
+    $result = $_SESSION['caman'];
+} elseif (isset($_POST['cawoman'])) {
+    $_SESSION["cawoman"] = $_POST["cawoman"];
+    $result = $_SESSION['cawoman'];
+} elseif (isset($_POST['caother'])) {
+    $_SESSION["caother"] = $_POST["caother"];
+    $result = $_SESSION['caother'];
 }
-$result = "";
-
-if (isset($_POST['worries']) && is_array($_POST['worries'])) {
-    foreach ($_POST['worries'] as $value) {
-        echo "{$value}, ";
-    }
-}
-echo '</p>';
-
-if (isset($_POST["send"])) {
-    if (!isset($_POST['worries'])) {
-        $result = "選択してください";
-        echo $result;
-    }
-}
-
-$akiyama = "INSERT INTO Akiyama (age, worries)
-values()";
-$felix ="INSERT INTO Felix (firstname, lastname, email)"
-
+echo $result;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -34,7 +24,7 @@ $felix ="INSERT INTO Felix (firstname, lastname, email)"
 </head>
 
 <body>
-    <form method="post" action="/diagnose/diagnose3.php">
+    <form method="post" action="/maching.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
             <input type="checkbox" name="worries[]" value="1">恋愛<br>
             <input type="checkbox" name="worries[]" value="2">家族・親族<br>
@@ -45,6 +35,7 @@ $felix ="INSERT INTO Felix (firstname, lastname, email)"
         </p>
         <p><input type="submit" name="send" value="送信"></p>
     </form>
+
 </body>
 
 </html>
