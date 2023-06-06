@@ -15,7 +15,7 @@
 <body>
     <p>あなたの性別は？</p>
     <form method="post" action="/team/diagnose/diagnose2.php">
-        <button type="submit" name="man" value="1" formaction="/diagnose/diagnose2.php">男性</button><br>
+        <button type="submit" name="man" value="1" formaction="/team/diagnose/diagnose2.php">男性</button><br>
         <button type="submit" name="woman" value="2">女性</button><br>
         <button type="submit" name="other" value="3">その他</button><br>
     </form>
