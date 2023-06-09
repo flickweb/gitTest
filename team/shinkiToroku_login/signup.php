@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
             mysqli_query($conn, $scategoryQuery);
 
-            echo "登録完了！";
+			header("Location: login.php");
+
+            // echo "登録完了！";
         } else {
             echo "登録失敗！";
         }
