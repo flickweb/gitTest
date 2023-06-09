@@ -1,6 +1,16 @@
 <?php
 session_start();
-$_SESSION["age"] = $_POST["age"]
+
+if (isset($_POST['man'])) {
+    $_SESSION["man"] = $_POST["man"];
+    $_SESSION['gender'] = $_SESSION['man'];
+} elseif (isset($_POST['woman'])) {
+    $_SESSION["woman"] = $_POST["woman"];
+    $_SESSION['gender'] = $_SESSION['woman'];
+} elseif (isset($_POST['other'])) {
+    $_SESSION["other"] = $_POST["other"];
+    $_SESSION['gender'] = $_SESSION['other'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,10 +25,10 @@ $_SESSION["age"] = $_POST["age"]
 
 <body>
     <p>担当のカウンセラー</p>
-    <form method="post" action="team/diagnose/diagnose4.php">
-        <a href="/diagnose/diagnose4.php"><button type="submit" name="caman" value="1">男性</button></a><br>
-        <a href="/diagnose/diagnose4.php"><button type="submit" name="cawoman" value="2">女性</button></a><br>
-        <a href="/diagnose/diagnose4.php"><button type="submit" name="caother" value="3">どちらでも</button></a><br>
+    <form method="post" action="diagnose4.php">
+        <button type="submit" name="caman" value="1">男性</button></a><br>
+        <button type="submit" name="cawoman" value="2">女性</button></a><br>
+        <button type="submit" name="caother" value="3">どちらでも</button></a><br>
     </form>
 </body>
 

@@ -3,15 +3,14 @@ session_start();
 
 if (isset($_POST['caman'])) {
     $_SESSION["caman"] = $_POST["caman"];
-    $result = $_SESSION['caman'];
+    $_SESSION['cag'] = $_SESSION['caman'];
 } elseif (isset($_POST['cawoman'])) {
     $_SESSION["cawoman"] = $_POST["cawoman"];
-    $result = $_SESSION['cawoman'];
+    $_SESSION['cag'] = $_SESSION['cawoman'];
 } elseif (isset($_POST['caother'])) {
     $_SESSION["caother"] = $_POST["caother"];
-    $result = $_SESSION['caother'];
+    $_SESSION['cag'] = $_SESSION['caother'];
 }
-echo $result;
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -24,7 +23,7 @@ echo $result;
 </head>
 
 <body>
-    <form method="post" action="team/maching.php">
+    <form method="post" action="/team/diagnose/diagnose1111.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
             <input type="checkbox" name="worries[]" value="1">恋愛<br>
             <input type="checkbox" name="worries[]" value="2">家族・親族<br>
