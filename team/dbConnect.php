@@ -8,4 +8,12 @@ define ("DB_CHARSET", "utf8mb4" );
 
 $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
+if(!$conn = mysqli_connect(DB_HOST,DB_USER,DB_PASS,DB_NAME))
+{
+
+	die("接続できない");
+}
+
+
+
 ?>

@@ -13,28 +13,23 @@ session_start();
 
 ?>
 
-
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
 </head>
 
 <body>
     <?php
-    $sql = "SELECT causer.name
-    from scategory
-    inner join cacategory on scategory.ctnum = cacategory.ctnum
-    inner join causer on cacategory.caid = causer.caid
-    where scategory.sid = 3";
-    //ログイン情報があったら使う    
 
-    //where scategory.sid = " .$sid;
+    $sql = "SELECT causer.name
+             from scategory
+             inner join cacategory on scategory.ctnum = cacategory.ctnum
+             inner join causer on cacategory.caid = causer.caid
+             where scategory.sid = 2";
+            //ログイン情報があったら使う    
+            //where scategory.sid = " .$sid;
+    
 
     if ($result = mysqli_query($conn, $sql)) {
         $resultCheck = mysqli_num_rows($result);

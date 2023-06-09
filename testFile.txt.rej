@@ -1,0 +1,9 @@
+diff a/testFile.txt b/testFile.txt	(rejected hunks)
+@@ -1,4 +1,2 @@
+ TEST ETST TEST
+-add yoshihara
+-
+-aaaaaaaaaaaaa
+\ No newline at end of file
++add yoshihara
+\ No newline at end of file
