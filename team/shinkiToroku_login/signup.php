@@ -4,40 +4,37 @@ session_start();
 include("../dbConnect.php");
 include("../functions.php");
 
-
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	//something was posted
-	$user_name = $_POST['name'];
-	$password = $_POST['pass'];
+    // Something was posted
+    $user_name = $_POST['name'];
+    $password = $_POST['pass'];
 
+    if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
+        // Save to database
+        $query = "INSERT INTO Suser (name, pass) VALUES ('$user_name', '$password')";
 
-	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
+        $res = mysqli_query($conn, $query);
 
+        if ($res) {
+            // Get the generated Sid from the Suser table
+            $newSid = mysqli_insert_id($conn);
 
+            // Insert the new Sid into the Scategory table
+            $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
+            mysqli_query($conn, $scategoryQuery);
 
-		//save to database
-
-		//I think we don't need the random user id
-		// $user_id = random_num(20);
-		//$query = "insert into users (user_id,user_name,password) values ('$user_id','$user_name','$password')";
-
-		$query = "INSERT INTO Suser (name, pass) VALUES ('$user_name', $password)";
-
-		$res = mysqli_query($conn, $query);
-		// if($res){
-		// 	echo "登録完了！";
-		// }else{
-		// 	echo "登録失敗！";
-		// }
-
-		// header("Location: login.php");
-		// die;
-	} else {
-		echo "アルファベットを含むユーザー名を入力してください。";
-	}
+            echo "登録完了！";
+        } else {
+            echo "登録失敗！";
+        }
+    } else {
+        echo "アルファベットを含むユーザー名を入力してください。";
+    }
 }
 ?>
+
+
 
 
 <!DOCTYPE html>
