@@ -1,4 +1,10 @@
 <?php
+
+#CTNUMまだやってない
+#CTNUMまだやってない
+#CTNUMまだやってない
+
+
 include("../dbConnect.php");
 include("../functions.php");
 session_start();

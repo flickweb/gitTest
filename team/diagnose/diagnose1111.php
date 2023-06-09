@@ -22,6 +22,8 @@ $n = $_SESSION['name'];
 $p = $_SESSION['pass'];
 $ssid = $_SESSION['Sid'];
 
+
+#CTNUMまだやってない
 $query = "UPDATE Suser
           SET gender = $g
           WHERE Sid = $ssid";
