@@ -1,5 +1,15 @@
 <?php
+include("../dbConnect.php");
+include("../functions.php");
 session_start();
+
+if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
+    echo "ログインしてください";
+} else {
+    echo "ようこそ" . $_SESSION['name'] . "さん";
+}
+
+
 
 if (isset($_POST['caman'])) {
     $_SESSION["caman"] = $_POST["caman"];
