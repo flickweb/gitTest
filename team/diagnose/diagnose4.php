@@ -1,8 +1,5 @@
 <?php
 session_start();
-include "../dbConnect.php";
-include("../functions.php");
-
 
 if (isset($_POST['caman'])) {
     $_SESSION["caman"] = $_POST["caman"];
@@ -15,24 +12,6 @@ if (isset($_POST['caman'])) {
     $result = $_SESSION['caother'];
 }
 echo $result;
-
-//added code
-
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	//something was posted
-    $ctnum = $_POST['ctnum'];
-    $category = $_POST['category'];
-    $sid = $_POST['sid'];
-
-    if(!empty($ctnum)){
-
-        $query ="INSERT INTO Scategory (ctnum) values('$ctnum')";
-
-        $res = mysqli_query($conn, $query);
-    }
-}
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ja">
