@@ -1,11 +1,23 @@
 <?php
 include_once 'dbConnect.php';
+session_start();
+
+// if (isset($_POST['worries']) && is_array($_POST['worries'])) {
+//     $_SESSION['worries'] = $_POST['worries'];
+
+//     foreach ($_SESSION['worries'] as $value) {
+//         echo "{$value}, ";
+//     }
+// }
+// echo '</p>';
+
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 
 <head>
+</head>
 
 <body>
     <?php
@@ -32,8 +44,7 @@ include_once 'dbConnect.php';
     }
     ?>
 
-</body>
-</head>
 
+</body>
 
 </html>
