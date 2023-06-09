@@ -35,8 +35,9 @@ session_start();
                         $_SESSION['name'] = $user_data['name'];
                         $_SESSION['Sid'] = $user_data['Sid'];
                         $_SESSION['pass'] = $user_data['pass'];
+                        $_SESSION['gender'] = $user_data['gender'];
 						header("Location: ../diagnose/diagnose1.php");
-						die;
+						
 					}
 				}
 			}

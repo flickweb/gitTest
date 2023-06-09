@@ -17,14 +17,21 @@ if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   }
 }
 echo '</p>';
-$user = 'dbuser';
+$g = $_SESSION['gender'];
+$n = $_SESSION['name'];
+$p = $_SESSION['pass'];
+$ssid = $_SESSION['Sid'];
 
-$password = 'ecc';
-$pdo = new PDO('mysql:dbname=studb;host=localhost', $user, $password);
+$query = "UPDATE Suser
+          SET gender = $g
+          WHERE Sid = $ssid";
+$res = mysqli_query($conn, $query);
 
-$sql = $pdo->prepare("INSERT INTO Suser( name, pass, gender) VALUES (:n, :p, :g)");
-$sql->bindValue(':g', $_SESSION['gender']);
-$sql->bindValue(':p', $_SESSION['pass']);
-$sql->bindValue(':n', $_SESSION['name']);
-$sql->execute();
-?>
+// $user = 'dbuser';
+
+// $password = 'ecc';
+// $pdo = new PDO('mysql:dbname=studb;host=localhost', $user, $password);
+
+// $sql = $pdo->prepare("INSERT INTO Suser(gender) VALUES (:g)");
+// $sql->bindValue(':g', $_SESSION['gender']);
+// ?>
