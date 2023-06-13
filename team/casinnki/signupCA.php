@@ -2,7 +2,7 @@
 session_start();
 
 include("../dbConnect.php");
-include("../functions.php");
+include("../functionsCA.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	// Something was posted
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 		// Save to database
-		$query = "INSERT INTO causer (pass, name) VALUES('$user_name', '$password')";
+		$query = "INSERT INTO causer (name, pass) VALUES('$user_name', '$password')";
 
 		$res = mysqli_query($conn, $query);
 
@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	<div id="box">
 
 		<form method="post">
-			<h1>サインアップ</h1>
+			<h1>サインアップ カウンセラ</h1>
 			<div class="content">
 				<div class="input-field">
 					<input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"><br><br>
 				</div>
 				<input type="checkbox" onclick="myFunction()">パスワード表示
-				<script src="signup.js"></script>
+				<script src="../shinkiToroku_login/signup.js"></script>
 			</div>
 
 			<div class="action">

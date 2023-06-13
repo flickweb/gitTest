@@ -1,6 +1,6 @@
 <?php
 include("../dbConnect.php");
-include("../functions.php");
+include("../functionsCA.php");
 session_start();
 
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
@@ -35,7 +35,7 @@ if (isset($_POST['man'])) {
 
 <body>
     <p>担当のカウンセラー</p>
-    <form method="post" action="diagnose4.php">
+    <form method="post" action="diagnose4_CA.php">
         <button type="submit" name="caman" value="1">男性</button></a><br>
         <button type="submit" name="cawoman" value="2">女性</button></a><br>
         <button type="submit" name="caother" value="3">どちらでも</button></a><br>

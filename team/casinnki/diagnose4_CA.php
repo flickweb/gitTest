@@ -6,7 +6,7 @@
 
 
 include("../dbConnect.php");
-include("../functions.php");
+include("../functionsCA.php");
 session_start();
 
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
@@ -39,7 +39,7 @@ if (isset($_POST['caman'])) {
 </head>
 
 <body>
-    <form method="post" action="/team/diagnose/diagnose1111.php">
+    <form method="post" action="diagnose1111_CA.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
             <input type="checkbox" name="worries[]" value="1">恋愛<br>
             <input type="checkbox" name="worries[]" value="2">家族・親族<br>

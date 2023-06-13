@@ -5,7 +5,7 @@ session_start();
 	include ("../dbConnect.php");
 	include("../functions.php");
 
-echo $_SESSION['a'];
+// echo $_SESSION['a'];
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted

@@ -3,7 +3,7 @@
 session_start();
 
 	include ("../dbConnect.php");
-	include("../functions.php");
+	include("../functionsCA.php");
 
 echo $_SESSION['a'];
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -33,10 +33,10 @@ echo $_SESSION['a'];
 
 						// $_SESSION['user_id'] = $user_data['id'];
                         $_SESSION['name'] = $user_data['name'];
-                        $_SESSION['Sid'] = $user_data['Sid'];
+                        $_SESSION['CAid'] = $user_data['CAid'];
                         $_SESSION['pass'] = $user_data['pass'];
                         $_SESSION['gender'] = $user_data['gender'];
-						header("Location: ../diagnose/diagnose1.php");
+						header("Location: diagnose1_CA.php");
 						
 					}
 				}
@@ -136,7 +136,7 @@ echo $_SESSION['a'];
 	<div id="box">
 		
 		<form method="post">
-			<h1>ログイン</h1>
+			<h1>ログイン　カウンセラ</h1>
             <div class="content">
                 <div class="input-field">
 			        <input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
@@ -145,11 +145,11 @@ echo $_SESSION['a'];
                     <input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"><br><br>
                 </div>
                 <input type="checkbox" onclick="myFunction()">パスワード表示
-                <script src="login.js"></script>
+                <script src="../shinkiToroku_login/login.js"></script>
             </div>
 
             <div class="action">
-				<a id="button" href="signup.php">新規登録ページへ</a>
+				<a id="button" href="signupCA.php">新規登録ページへ</a>
                 <input id="button" type="submit" value="ログイン">
                 
             

@@ -1,6 +1,6 @@
 <?php
 include("../dbConnect.php");
-include("../functions.php");
+include("../functionsCA.php");
 session_start();
 
 
@@ -31,13 +31,13 @@ echo '</p>';
 
 
 #CTNUMまだやってない
-$query = "UPDATE Suser
+$query = "UPDATE CAuser
           SET gender = $g
-          WHERE Sid = $caid";
+          WHERE CAid = $caid";
 $res = mysqli_query($conn, $query);
 
-$newSid = mysqli_insert_id($conn);
-$_SESSION['a'] = $newSid;
+$newCAid = mysqli_insert_id($conn);
+$_SESSION['a'] = $newCAid;
 
 // $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
 // 			mysqli_query($conn, $scategoryQuery);
