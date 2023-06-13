@@ -17,13 +17,12 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
   echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
-
-
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   foreach ($_POST['worries'] as $value) {
-    echo "{$value}, ";
-    $scategoryQuery = "INSERT into CAcategory(caid, ctnum) VALUES((select caid from CAuser where caid=$caid), $value)";
-			mysqli_query($conn, $scategoryQuery);
+      echo "{$value}, ";
+      $scategoryQuery = "INSERT into CAcategory(caid, ctnum) VALUES((select caid from CAuser where caid=$caid), $value)";
+			var_dump($scategoryQuery);
+      mysqli_query($conn, $scategoryQuery);
   }
 }
 echo '</p>';
