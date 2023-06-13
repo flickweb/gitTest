@@ -21,6 +21,8 @@ $g = $_SESSION['gender'];
 $n = $_SESSION['name'];
 $p = $_SESSION['pass'];
 $ssid = $_SESSION['Sid'];
+$_SESSION['worries'] = $_POST['worries'];
+$worries = $_SESSION['worries'];
 
 
 #CTNUMまだやってない
@@ -28,6 +30,7 @@ $query = "UPDATE Suser
           SET gender = $g
           WHERE Sid = $ssid";
 $res = mysqli_query($conn, $query);
+
 
 // $user = 'dbuser';
 

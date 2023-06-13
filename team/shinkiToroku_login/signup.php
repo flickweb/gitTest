@@ -5,35 +5,35 @@ include("../dbConnect.php");
 include("../functions.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    // Something was posted
-    $user_name = $_POST['name'];
-    $password = $_POST['pass'];
+	// Something was posted
+	$user_name = $_POST['name'];
+	$password = $_POST['pass'];
 
-    if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
-		
+	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
-        // Save to database
-        $query = "INSERT INTO Suser (name, pass) VALUES ('$user_name', '$password')";
 
-        $res = mysqli_query($conn, $query);
+		// Save to database
+		$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
 
-        if ($res) {
-            // Get the generated Sid from the Suser table
-            $newSid = mysqli_insert_id($conn);
+		$res = mysqli_query($conn, $query);
 
-            // Insert the new Sid into the Scategory table
-            // $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
-            // mysqli_query($conn, $scategoryQuery);
+		if ($res) {
+			// Get the generated Sid from the Suser table
+			$newSid = mysqli_insert_id($conn);
+
+			// Insert the new Sid into the Scategory table
+			// $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
+			// mysqli_query($conn, $scategoryQuery);
 
 			header("Location: login.php");
 
-            // echo "登録完了！";
-        } else {
-            echo "登録失敗！";
-        }
-    } else {
-        echo "アルファベットを含むユーザー名を入力してください。";
-    }
+			// echo "登録完了！";
+		} else {
+			echo "登録失敗！";
+		}
+	} else {
+		echo "アルファベットを含むユーザー名を入力してください。";
+	}
 }
 ?>
 
