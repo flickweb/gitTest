@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		// Save to database
 		$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
-		
 
 		$res = mysqli_query($conn, $query);
 
@@ -25,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 			// Insert the new Sid into the Scategory table
-			// $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
-			// mysqli_query($conn, $scategoryQuery);
+			$scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (1)";
+			mysqli_query($conn, $scategoryQuery);
 
 			header("Location: login.php");
 
