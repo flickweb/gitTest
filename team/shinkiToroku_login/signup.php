@@ -24,8 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 			// Insert the new Sid into the Scategory table
-			$scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (1)";
-			mysqli_query($conn, $scategoryQuery);
+			// $scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (null)";
+			// mysqli_query($conn, $scategoryQuery);
 
 			header("Location: login.php");
 

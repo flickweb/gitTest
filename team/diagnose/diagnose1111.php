@@ -3,6 +3,14 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+
+$g = $_SESSION['gender'];
+$n = $_SESSION['name'];
+$p = $_SESSION['pass'];
+$ssid = $_SESSION['Sid'];
+$_SESSION['worries'] = $_POST['worries'];
+$worries[] = $_SESSION['worries'];
+
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
   echo "ログインしてください";
 } else {
@@ -14,15 +22,12 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   foreach ($_POST['worries'] as $value) {
     echo "{$value}, ";
+    $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
+			mysqli_query($conn, $scategoryQuery);
   }
 }
 echo '</p>';
-$g = $_SESSION['gender'];
-$n = $_SESSION['name'];
-$p = $_SESSION['pass'];
-$ssid = $_SESSION['Sid'];
-$_SESSION['worries'] = $_POST['worries'];
-$worries[] = $_SESSION['worries'];
+
 
 
 #CTNUMまだやってない
@@ -31,10 +36,11 @@ $query = "UPDATE Suser
           WHERE Sid = $ssid";
 $res = mysqli_query($conn, $query);
 
-$scategoryQuery = "UPDATE scategory
-                    SET ctnum = $value
-                    WHERE Sid = $ssid";
-			mysqli_query($conn, $scategoryQuery);
+$newSid = mysqli_insert_id($conn);
+$_SESSION['a'] = $newSid;
+
+// $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
+// 			mysqli_query($conn, $scategoryQuery);
 
 
 // $user = 'dbuser';
