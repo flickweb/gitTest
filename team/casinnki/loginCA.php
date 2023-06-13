@@ -16,7 +16,7 @@ echo $_SESSION['a'];
 		{
 
 			//read from database
-			 $query = "SELECT * FROM Suser WHERE name = '$user_name' limit 1";
+			 $query = "SELECT * FROM causer WHERE name = '$user_name' limit 1";
 			 $result = mysqli_query($conn, $query);
 
             

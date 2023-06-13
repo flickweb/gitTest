@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 		// Save to database
-		$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
+		$query = "INSERT INTO causer (pass, name) VALUES('$user_name', '$password')";
 
 		$res = mysqli_query($conn, $query);
 
@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			// $scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (null)";
 			// mysqli_query($conn, $scategoryQuery);
 
-			header("Location: login.php");
+			header("Location: loginCA.php");
 
 			// echo "登録完了！";
 		} else {
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			</div>
 
 			<div class="action">
-				<a id="button" href="login.php">ログインページへ</a>
+				<a id="button" href="/team/casinnki/loginCA.php">ログインページへ</a>
 				<input id="button" type="submit" value="新規登録">
 			</div>
 		</form>
