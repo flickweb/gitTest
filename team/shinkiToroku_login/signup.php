@@ -19,11 +19,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 		if ($res) {
 			// Get the generated Sid from the Suser table
-			$newSid = mysqli_insert_id($conn);
+			// $newSid = mysqli_insert_id($conn);
+			// $_SESSION['a'] = $newSid;
+
 
 			// Insert the new Sid into the Scategory table
-			// $scategoryQuery = "INSERT INTO Scategory (Sid, ctnum) VALUES ('$newSid', 'your_ctnum_value')";
-			// mysqli_query($conn, $scategoryQuery);
+			$scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (1)";
+			mysqli_query($conn, $scategoryQuery);
 
 			header("Location: login.php");
 
