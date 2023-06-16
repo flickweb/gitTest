@@ -11,8 +11,8 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
 }
 
 $n = $_SESSION['name'];
-$ssid= $_SESSION['Sid'];
-
+$ssid = $_SESSION['Sid'];
+$value = $_SESSION['worries'];
 ?>
 
 <!DOCTYPE html>
@@ -22,28 +22,35 @@ $ssid= $_SESSION['Sid'];
 </head>
 
 <body>
-    <?php
 
-    $sql = "SELECT DISTINCT causer.name
-             from scategory
-             inner join cacategory on scategory.ctnum = cacategory.ctnum
-             inner join causer on cacategory.caid = causer.caid
-             where scategory.sid = $ssid";
-            //ログイン情報があったら使う    
-            //where scategory.sid = " .$sid;
-    
+     <!-- FIX THIS PART -->
+    <?php
+    $sql = "SELECT causer.name, COUNT(*) AS match_count
+        FROM scategory
+        INNER JOIN cacategory ON scategory.ctnum = cacategory.ctnum
+        INNER JOIN causer ON cacategory.caid = causer.caid
+        WHERE scategory.sid = $ssid
+        GROUP BY causer.caid
+        ORDER BY 
+    CASE WHEN scategory.ctnum IN ($value) THEN 0 ELSE 1 END,
+    match_count DESC";
+    ;
 
     if ($result = mysqli_query($conn, $sql)) {
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
-            while ($row = $result->fetch_assoc()) {
+            while ($row = mysqli_fetch_assoc($result)) {
                 echo $row['name'] . "<br>";
-                
             }
+        } else {
+            echo "No matching CAusers found.";
         }
     } else {
-        echo "Error:" . $sql . "<br>" . mysqli_error($conn);
+        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+
+    // Close the database connection
+    mysqli_close($conn);
     ?>
 
 
