@@ -24,7 +24,7 @@ $ssid= $_SESSION['Sid'];
 <body>
     <?php
 
-    $sql = "SELECT causer.name
+    $sql = "SELECT DISTINCT causer.name
              from scategory
              inner join cacategory on scategory.ctnum = cacategory.ctnum
              inner join causer on cacategory.caid = causer.caid
@@ -38,7 +38,7 @@ $ssid= $_SESSION['Sid'];
         if ($resultCheck > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo $row['name'] . "<br>";
-                // echo $row['caid'] . "<br>";
+                
             }
         }
     } else {
