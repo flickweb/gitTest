@@ -1,15 +1,17 @@
 <?php
 include_once 'dbConnect.php';
+include_once 'functions.php';
 session_start();
 
-// if (isset($_POST['worries']) && is_array($_POST['worries'])) {
-//     $_SESSION['worries'] = $_POST['worries'];
 
-//     foreach ($_SESSION['worries'] as $value) {
-//         echo "{$value}, ";
-//     }
-// }
-// echo '</p>';
+if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
+    echo "ログインしてください";
+} else {
+    echo "ようこそ" . $_SESSION['name'] . "さん";
+}
+
+$n = $_SESSION['name'];
+$ssid= $_SESSION['Sid'];
 
 ?>
 
@@ -26,7 +28,7 @@ session_start();
              from scategory
              inner join cacategory on scategory.ctnum = cacategory.ctnum
              inner join causer on cacategory.caid = causer.caid
-             where scategory.sid = 2";
+             where scategory.sid = $ssid";
             //ログイン情報があったら使う    
             //where scategory.sid = " .$sid;
     
