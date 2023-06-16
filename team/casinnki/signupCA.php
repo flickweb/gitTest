@@ -138,6 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 			<div class="action">
 				<a id="button" href="/team/casinnki/loginCA.php">ログインページへ</a>
+				<a id="button" href="/team/shinkiToroku_login/signup.php">生徒</a>
 				<input id="button" type="submit" value="新規登録">
 			</div>
 		</form>
