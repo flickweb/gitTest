@@ -7,7 +7,6 @@ session_start();
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
     echo "ログインしてください";
 } else {
-    echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
 $n = $_SESSION['name'];
