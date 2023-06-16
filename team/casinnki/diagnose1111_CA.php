@@ -49,4 +49,6 @@ $_SESSION['a'] = $newCAid;
 
 // $sql = $pdo->prepare("INSERT INTO Suser(gender) VALUES (:g)");
 // $sql->bindValue(':g', $_SESSION['gender']);
-// ?>
+//
+?>
+!
