@@ -17,20 +17,24 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
   echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
+//消す
+$sql2 = "DELETE FROM Scategory WHERE Sid = $ssid";
+mysqli_query($conn, $sql2);
+//
 $sql1 = "SELECT Sid FROM Suser WHERE Sid = $ssid";
 mysqli_query($conn, $sql1);
-$sql2 = "SELECT Sid FROM Scategory WHERE Sid = $ssid";
-mysqli_query($conn, $sql2);
-if (isset($sql1) && !isset($sql2)) {
-  if (isset($_POST['worries']) && is_array($_POST['worries'])) {
-    foreach ($_POST['worries'] as $value) {
-      echo "{$value}, ";
-      $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
-      mysqli_query($conn, $scategoryQuery);
-    }
+
+//MAKE A CHECKBOX THAT IS CHECKED IF THE USER HAS ALREADY CHECKED IT or BY READING ITS VALUE FROM SQL
+//ユーザが既にチェックした場合、またはSQLから値を読み込むことによってチェックされるチェックボックスを作成する。
+
+if (isset($_POST['worries']) && is_array($_POST['worries'])) {
+  foreach ($_POST['worries'] as $value) {
+    echo "{$value}, ";
+    $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
+    mysqli_query($conn, $scategoryQuery);
   }
-  echo '</p>';
 }
+echo '</p>';
 
 
 

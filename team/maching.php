@@ -23,6 +23,7 @@ $value = $_SESSION['worries'];
 <body>
 
      <!-- FIX THIS PART -->
+     <!-- 順番 -->
     <?php
     $sql ="SELECT causer.name, cacategory.ctnum,  COUNT(*) AS match_count
     FROM scategory
