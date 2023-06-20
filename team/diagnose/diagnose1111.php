@@ -17,10 +17,11 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
   echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
-$sql = "SELECT Sid FROM Scategory WHERE Sid = $ssid";
-mysqli_query($conn, $sql);
-$_SESSION['sql'] = $sql;
-if (!isset($sql)) {
+$sql1 = "SELECT Sid FROM Suser WHERE Sid = $ssid";
+mysqli_query($conn, $sql1);
+$sql2 = "SELECT Sid FROM Scategory WHERE Sid = $ssid";
+mysqli_query($conn, $sql2);
+if (isset($sql1) && !isset($sql2)) {
   if (isset($_POST['worries']) && is_array($_POST['worries'])) {
     foreach ($_POST['worries'] as $value) {
       echo "{$value}, ";
