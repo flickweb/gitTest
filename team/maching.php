@@ -53,6 +53,7 @@ $value = $_SESSION['worries'];
     mysqli_close($conn);
     ?>
 
+<a href="/team/diagnose/diagnose4.php">変更<a>
 
 </body>
 

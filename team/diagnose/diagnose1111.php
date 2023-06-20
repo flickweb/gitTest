@@ -29,6 +29,7 @@ mysqli_query($conn, $sql1);
 
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   foreach ($_POST['worries'] as $value) {
+    $_SESSION['value'] = $value;
     echo "{$value}, ";
     $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
     mysqli_query($conn, $scategoryQuery);

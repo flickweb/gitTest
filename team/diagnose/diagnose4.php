@@ -9,13 +9,12 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
     echo "ログインしてください";
 } else {
     echo "ようこそ" . $_SESSION['name'] . "さん";
 }
-
-
 
 if (isset($_POST['caman'])) {
     $_SESSION["caman"] = $_POST["caman"];
@@ -41,8 +40,8 @@ if (isset($_POST['caman'])) {
 <body>
     <form method="post" action="/team/diagnose/diagnose1111.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
-            <input type="checkbox" name="worries[]" value="1">恋愛<br>
-            <input type="checkbox" name="worries[]" value="2">家族・親族<br>
+            <input type="checkbox" name="worries[]" value="1" <?php if(isset($_SESSION['worries']) == $find){echo "checked";} ?>>恋愛<br>
+            <input type="checkbox" name="worries[]" value="2" <?php if(isset($_SESSION['worries']) == $find){echo "checked";} ?>>家族・親族<br>
             <input type="checkbox" name="worries[]" value="3">勉強の不安<br>
             <input type="checkbox" name="worries[]" value="4">漠然とした不安<br>
             <input type="checkbox" name="worries[]" value="5">対人関係<br>
