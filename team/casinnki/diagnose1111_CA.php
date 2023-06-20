@@ -17,6 +17,9 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
   echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
+$sql = "SELECT * FROM Cacategory WHERE Caid = $caid";
+mysqli_query($conn, $sql);
+if (!isset($sql)) {
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   foreach ($_POST['worries'] as $value) {
       echo "{$value}, ";
@@ -26,6 +29,7 @@ if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   }
 }
 echo '</p>';
+}
 
 
 

@@ -9,6 +9,17 @@ include("../dbConnect.php");
 include("../functionsCA.php");
 session_start();
 
+if (isset($_POST['man'])) {
+    $_SESSION["man"] = $_POST["man"];
+    $_SESSION['gender'] = $_SESSION['man'];
+} elseif (isset($_POST['woman'])) {
+    $_SESSION["woman"] = $_POST["woman"];
+    $_SESSION['gender'] = $_SESSION['woman'];
+} elseif (isset($_POST['other'])) {
+    $_SESSION["other"] = $_POST["other"];
+    $_SESSION['gender'] = $_SESSION['other'];
+}
+
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
     echo "ログインしてください";
 } else {
@@ -40,11 +51,11 @@ if (isset($_POST['caman'])) {
 
 <body>
     <form method="post" action="diagnose1111_CA.php">
-        <p>相談したいテーマを選択してください(複数選択可)<br>
-            <input type="checkbox" name="worries[]" value="1">恋愛<br>
+        <p>得意なテーマを選択してください(複数選択可)<br>
+            <input type="checkbox" name="worries[]" value="1">恋愛面<br>
             <input type="checkbox" name="worries[]" value="2">家族・親族<br>
-            <input type="checkbox" name="worries[]" value="3">勉強の不安<br>
-            <input type="checkbox" name="worries[]" value="4">漠然とした不安<br>
+            <input type="checkbox" name="worries[]" value="3">勉強<br>
+            <input type="checkbox" name="worries[]" value="4">メンタルヘルス（漠然とした不安）<br>
             <input type="checkbox" name="worries[]" value="5">対人関係<br>
             <input type="checkbox" name="worries[]" value="6">自己理解<br>
         </p>

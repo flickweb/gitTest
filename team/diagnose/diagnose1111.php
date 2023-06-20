@@ -17,16 +17,19 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
   echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
-
-
-if (isset($_POST['worries']) && is_array($_POST['worries'])) {
-  foreach ($_POST['worries'] as $value) {
-    echo "{$value}, ";
-    $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
-			mysqli_query($conn, $scategoryQuery);
+$sql = "SELECT Sid FROM Scategory WHERE Sid = $ssid";
+mysqli_query($conn, $sql);
+$_SESSION['sql'] = $sql;
+if (!isset($sql)) {
+  if (isset($_POST['worries']) && is_array($_POST['worries'])) {
+    foreach ($_POST['worries'] as $value) {
+      echo "{$value}, ";
+      $scategoryQuery = "INSERT into scategory(sid, ctnum) VALUES((select sid from suser where sid=$ssid), $value)";
+      mysqli_query($conn, $scategoryQuery);
+    }
   }
+  echo '</p>';
 }
-echo '</p>';
 
 
 
@@ -52,4 +55,3 @@ $_SESSION['a'] = $newSid;
 // $sql->bindValue(':g', $_SESSION['gender']);
 // 
 header('Location: ../maching.php');
-?>

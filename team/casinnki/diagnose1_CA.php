@@ -24,7 +24,7 @@
 
 <body>
     <p>あなたの性別は？</p>
-    <form method="post" action="diagnose3_CA.php">
+    <form method="post" action="diagnose4_CA.php">
         <button type="submit" name="man" value="1">男性</button><br>
         <button type="submit" name="woman" value="2">女性</button><br>
         <button type="submit" name="other" value="3">その他</button><br>
