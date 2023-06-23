@@ -21,7 +21,6 @@ $value = $_SESSION['worries'];
 </head>
 
 <body>
-
      <!-- FIX THIS PART -->
      <!-- 順番 -->
     <?php
@@ -40,7 +39,7 @@ $value = $_SESSION['worries'];
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo $row['name'] . "<br>";
+                echo '<a href="/team/home/home.php">'.$row['name'] . "</a>". "<br>";
             }
         } else {
             echo "No matching CAusers found.";
@@ -53,7 +52,7 @@ $value = $_SESSION['worries'];
     mysqli_close($conn);
     ?>
 
-<a href="/team/diagnose/diagnose4.php">変更<a>
+<a href="/team/diagnose/diagnose5.php">変更<a>
 
 </body>
 
