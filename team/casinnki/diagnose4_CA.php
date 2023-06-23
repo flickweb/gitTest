@@ -9,15 +9,15 @@ include("../dbConnect.php");
 include("../functionsCA.php");
 session_start();
 
-if (isset($_POST['man'])) {
-    $_SESSION["man"] = $_POST["man"];
-    $_SESSION['gender'] = $_SESSION['man'];
-} elseif (isset($_POST['woman'])) {
-    $_SESSION["woman"] = $_POST["woman"];
-    $_SESSION['gender'] = $_SESSION['woman'];
-} elseif (isset($_POST['other'])) {
-    $_SESSION["other"] = $_POST["other"];
-    $_SESSION['gender'] = $_SESSION['other'];
+if (isset($_POST['caman'])) {
+    $_SESSION["caman"] = $_POST["caman"];
+    $_SESSION['cagender'] = $_SESSION['caman'];
+} elseif (isset($_POST['cawoman'])) {
+    $_SESSION["cawoman"] = $_POST["cawoman"];
+    $_SESSION['cagender'] = $_SESSION['cawoman'];
+} elseif (isset($_POST['caother'])) {
+    $_SESSION["caother"] = $_POST["caother"];
+    $_SESSION['cagender'] = $_SESSION['caother'];
 }
 
 if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
@@ -26,18 +26,6 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
     echo "ようこそ" . $_SESSION['name'] . "さん";
 }
 
-
-
-if (isset($_POST['caman'])) {
-    $_SESSION["caman"] = $_POST["caman"];
-    $_SESSION['cag'] = $_SESSION['caman'];
-} elseif (isset($_POST['cawoman'])) {
-    $_SESSION["cawoman"] = $_POST["cawoman"];
-    $_SESSION['cag'] = $_SESSION['cawoman'];
-} elseif (isset($_POST['caother'])) {
-    $_SESSION["caother"] = $_POST["caother"];
-    $_SESSION['cag'] = $_SESSION['caother'];
-}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
