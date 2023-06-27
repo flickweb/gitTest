@@ -130,7 +130,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
 				</div>
 				<div class="input-field">
-					<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"><br><br>
+				<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"
+						pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+						oninvalid="setCustomValidity('8文字以上少なくとも1つの文字と1つの数字')"
+						onchange="try{setCustomValidity('')}catch(e){}"><br><br>
 				</div>
 				<input type="checkbox" onclick="myFunction()">パスワード表示
 				<script src="../shinkiToroku_login/signup.js"></script>
