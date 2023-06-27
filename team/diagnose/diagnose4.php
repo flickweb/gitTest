@@ -1,12 +1,4 @@
-<?php
-
-#CTNUMまだやってない
-#CTNUMまだやってない
-#CTNUMまだやってない
-
-
-include("../dbConnect.php");
-include("../functions.php");
+./functions.php");
 session_start();
 
 
@@ -40,12 +32,12 @@ if (isset($_POST['hcaman'])) {
 <body>
     <form method="post" action="/team/diagnose/diagnose1111.php">
         <p>相談したいテーマを選択してください(複数選択可)<br>
-        <input type="checkbox" name="worries[]" value="1" <?php if(empty($_SESSION['worries'])||in_array("1",$_SESSION['worries'])) echo 'checked'?>>恋愛<br>
-            <input type="checkbox" name="worries[]" value="2" <?php if(empty($_SESSION['worries'])||in_array("2",$_SESSION['worries'])) echo 'checked'?>>家族・親族<br>
-            <input type="checkbox" name="worries[]" value="3" <?php if(empty($_SESSION['worries'])||in_array("3",$_SESSION['worries'])) echo 'checked'?>>勉強の不安<br>
-            <input type="checkbox" name="worries[]" value="4" <?php if(empty($_SESSION['worries'])||in_array("4",$_SESSION['worries'])) echo 'checked'?>>漠然とした不安<br>
-            <input type="checkbox" name="worries[]" value="5" <?php if(empty($_SESSION['worries'])||in_array("5",$_SESSION['worries'])) echo 'checked'?>>対人関係<br>
-            <input type="checkbox" name="worries[]" value="6" <?php if(empty($_SESSION['worries'])||in_array("6",$_SESSION['worries'])) echo 'checked'?>>自己理解<br>
+        <input type="checkbox" name="worries[]" value="1"> 恋愛<br>
+            <input type="checkbox" name="worries[]" value="2">家族・親族<br>
+            <input type="checkbox" name="worries[]" value="3">勉強の不安<br>
+            <input type="checkbox" name="worries[]" value="4">漠然とした不安<br>
+            <input type="checkbox" name="worries[]" value="5">対人関係<br>
+            <input type="checkbox" name="worries[]" value="6">自己理解<br>
         </p>
         <p><input type="submit" name="send" value="送信"></p>
     </form>
