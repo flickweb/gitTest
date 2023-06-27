@@ -1,4 +1,6 @@
-./functions.php");
+<?php
+include("../functions.php");
+include("../dbConnect.php");
 session_start();
 
 
