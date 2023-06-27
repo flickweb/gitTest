@@ -10,36 +10,39 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	$password = $_POST['pass'];
 
 	$query1 = "SELECT * FROM suser WHERE name = $user_name limit 1";
-	$res1 = mysqli_query($conn, $query1);
-	echo $res1;
-	if ($res1 < 0) {
-		if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
-			// Save to database
-			$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
-
-			$res = mysqli_query($conn, $query);
-
-			if ($res) {
-				// Get the generated Sid from the Suser table
-				// $newSid = mysqli_insert_id($conn);
-				// $_SESSION['a'] = $newSid;
+	if ($res1 = mysqli_query($conn, $query1)) {
+		$resultCheck = mysqli_num_rows($res1);
 
 
-				// Insert the new Sid into the Scategory table
-				// $scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (null)";
-				// mysqli_query($conn, $scategoryQuery);
+		if ($resultCheck > 0) {
+			if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
+				// Save to database
+				$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
 
-				header("Location: login.php");
+				$res = mysqli_query($conn, $query);
 
-				// echo "登録完了！";
+				if ($res) {
+					// Get the generated Sid from the Suser table
+					// $newSid = mysqli_insert_id($conn);
+					// $_SESSION['a'] = $newSid;
+
+
+					// Insert the new Sid into the Scategory table
+					// $scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (null)";
+					// mysqli_query($conn, $scategoryQuery);
+
+					header("Location: login.php");
+
+					// echo "登録完了！";
+				} else {
+					echo "登録失敗！";
+				}
 			} else {
-				echo "登録失敗！";
+				echo "アルファベットを含むユーザー名を入力してください。";
 			}
 		} else {
-			echo "アルファベットを含むユーザー名を入力してください。";
+			echo "そのユーザー名は既に使われています";
 		}
-	}else{
-		echo "そのユーザー名は既に使われています";
 	}
 }
 ?>
