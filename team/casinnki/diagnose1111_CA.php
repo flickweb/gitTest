@@ -5,16 +5,16 @@ session_start();
 
 
 $g = $_SESSION['gender'];
-$n = $_SESSION['name'];
+$n = $_SESSION['username'];
 $p = $_SESSION['pass'];
 $caid = $_SESSION['CAid'];
 $_SESSION['worries'] = $_POST['worries'];
 $worries[] = $_SESSION['worries'];
 
-if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
+if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
   echo "ログインしてください";
 } else {
-  echo "ようこそ" . $_SESSION['name'] . "さん";
+  echo "ようこそ" . $_SESSION['username'] . "さん";
 }
 
 $sql = "SELECT * FROM Cacategory WHERE Caid = $caid";

@@ -10,10 +10,10 @@ include("../functions.php");
 session_start();
 
 
-if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
+if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['Sid'])) {
     echo "ログインしてください";
 } else {
-    echo "ようこそ" . $_SESSION['name'] . "さん";
+    echo "ようこそ" . $_SESSION['username'] . "さん";
 }
 
 if (isset($_POST['caman'])) {

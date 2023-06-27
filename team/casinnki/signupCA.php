@@ -6,14 +6,14 @@ include("../functionsCA.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	// Something was posted
-	$user_name = $_POST['name'];
+	$user_name = $_POST['username'];
 	$password = $_POST['pass'];
 
 	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
 
 		// Save to database
-		$query = "INSERT INTO causer (name, pass) VALUES('$user_name', '$password')";
+		$query = "INSERT INTO causer (username, pass) VALUES('$user_name', '$password')";
 
 		$res = mysqli_query($conn, $query);
 
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<h1>サインアップ カウンセラ</h1>
 			<div class="content">
 				<div class="input-field">
-					<input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
+					<input type="text" type="text" name="username" placeholder="ユーザー"><br><br>
 				</div>
 				<div class="input-field">
 				<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"

@@ -9,14 +9,14 @@ echo $_SESSION['a'];
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
-		$user_name = $_POST['name'];
+		$user_name = $_POST['username'];
 		$password = $_POST['pass'];
 
 		if(!empty($user_name) && !empty($password) && !is_numeric($user_name))
 		{
 
 			//read from database
-			 $query = "SELECT * FROM causer WHERE name = '$user_name' limit 1";
+			 $query = "SELECT * FROM causer WHERE username = '$user_name' limit 1";
 			 $result = mysqli_query($conn, $query);
 
             
@@ -32,7 +32,7 @@ echo $_SESSION['a'];
 					{
 
 						// $_SESSION['user_id'] = $user_data['id'];
-                        $_SESSION['name'] = $user_data['name'];
+                        $_SESSION['username'] = $user_data['username'];
                         $_SESSION['CAid'] = $user_data['CAid'];
                         $_SESSION['pass'] = $user_data['pass'];
                         $_SESSION['gender'] = $user_data['gender'];
@@ -139,7 +139,7 @@ echo $_SESSION['a'];
 			<h1>ログイン　カウンセラ</h1>
             <div class="content">
                 <div class="input-field">
-			        <input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
+			        <input type="text" type="text" name="username" placeholder="ユーザー"><br><br>
 			    </div>
                 <div class="input-field">
                     <input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"><br><br>

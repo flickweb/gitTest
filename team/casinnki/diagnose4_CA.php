@@ -20,10 +20,10 @@ if (isset($_POST['caman'])) {
     $_SESSION['cagender'] = $_SESSION['caother'];
 }
 
-if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['CAid'])) {
+if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
     echo "ログインしてください";
 } else {
-    echo "ようこそ" . $_SESSION['name'] . "さん";
+    echo "ようこそ" . $_SESSION['username'] . "さん";
 }
 
 ?>
