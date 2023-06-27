@@ -7,13 +7,14 @@ include("../functionsCA.php");
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	// Something was posted
 	$user_name = $_POST['username'];
+	$real_name = $_POST['realname'];
 	$password = $_POST['pass'];
 
 	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
 
 		// Save to database
-		$query = "INSERT INTO causer (username, pass) VALUES('$user_name', '$password')";
+		$query = "INSERT INTO causer (username, realname, pass) VALUES('$user_name', '$real_name', '$password')";
 
 		$res = mysqli_query($conn, $query);
 
@@ -126,6 +127,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 		<form method="post">
 			<h1>サインアップ カウンセラ</h1>
 			<div class="content">
+			<div class="input-field">
+					<input type="text" type="text" name="realname" pattern="[A-Za-z]" placeholder="本名"
+					oninvalid="setCustomValidity('ローマ字を入力してください')"
+						onchange="try{setCustomValidity('')}catch(e){}"><br><br>
+				</div>
 				<div class="input-field">
 					<input type="text" type="text" name="username" placeholder="ユーザー"><br><br>
 				</div>
