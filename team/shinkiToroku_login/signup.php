@@ -13,7 +13,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	if ($res1 = mysqli_query($conn, $query1)) {
 		$resultCheck = mysqli_num_rows($res1);
 
-
+		echo $resultCheck;
+		echo $user_name;
 		if ($resultCheck > 0) {
 			if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 				// Save to database
