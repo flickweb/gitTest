@@ -4,45 +4,37 @@ session_start();
 include("../dbConnect.php");
 include("../functions.php");
 
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 	// Something was posted
 	$user_name = $_POST['name'];
 	$password = $_POST['pass'];
-	echo $user_name;
-	$query1 = "SELECT * FROM suser WHERE name = $user_name limit 1";
-	if ($res1 = mysqli_query($conn, $query1)) {
-		$resultCheck = mysqli_num_rows($res1);
 
-		echo $resultCheck;
-		if ($resultCheck > 0) {
-			if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
-				// Save to database
-				$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
+	if (!empty($user_name) && !empty($password) && !is_numeric($user_name)) {
 
-				$res = mysqli_query($conn, $query);
+		try {
+			// Save to database
+			$query = "INSERT INTO suser (name, pass) VALUES('$user_name', '$password')";
 
-				if ($res) {
-					// Get the generated Sid from the Suser table
-					// $newSid = mysqli_insert_id($conn);
-					// $_SESSION['a'] = $newSid;
+			$res = mysqli_query($conn, $query);
 
+			if ($res) {
+				header("Location: login.php");
 
-					// Insert the new Sid into the Scategory table
-					// $scategoryQuery = "INSERT INTO Scategory (ctnum) VALUES (null)";
-					// mysqli_query($conn, $scategoryQuery);
-
-					header("Location: login.php");
-
-					// echo "登録完了！";
-				} else {
-					echo "登録失敗！";
-				}
+				// echo "登録完了！";
 			} else {
-				echo "アルファベットを含むユーザー名を入力してください。";
+				echo "登録失敗！";
 			}
-		} else {
-			echo "そのユーザー名は既に使われています";
+		} catch (\mysqli_sql_exception $e) {
+			if ($e->getCode() === 1062) {
+				 echo "このユーザー名は既に登録されています。";
+			} else {
+				throw $e; // let the exception to be processed further 
+			}
 		}
+	} else {
+		echo "アルファベットを含むユーザー名を入力してください。";
 	}
 }
 ?>
@@ -138,7 +130,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 					<input type="text" type="text" name="name" placeholder="ユーザー"><br><br>
 				</div>
 				<div class="input-field">
-					<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"><br><br>
+					<input type="password" type="password" name="pass" id="myInput" placeholder="パスワード"
+						pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+						oninvalid="setCustomValidity('8文字以上少なくとも1つの文字と1つの数字')"
+						onchange="try{setCustomValidity('')}catch(e){}"><br><br>
 				</div>
 				<input type="checkbox" onclick="myFunction()">パスワード表示
 				<script src="signup.js"></script>
