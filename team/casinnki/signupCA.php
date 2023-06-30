@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 			<h1>サインアップ カウンセラ</h1>
 			<div class="content">
 			<div class="input-field">
-					<input type="text" type="text" name="realname" pattern="[A-Za-z]" placeholder="本名"
+					<input type="text" type="text" name="realname" pattern="[A-Z/a-z]" placeholder="本名"
 					oninvalid="setCustomValidity('ローマ字を入力してください')"
 						onchange="try{setCustomValidity('')}catch(e){}"><br><br>
 				</div>
