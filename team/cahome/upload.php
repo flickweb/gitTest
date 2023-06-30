@@ -18,10 +18,12 @@ if (isset($_POST['upload'])) { //送信ボタンが押された場合
 
 
     $query = "UPDATE causer SET filepass = $pass where caid = $caid";
+    mysqli_query($conn, $query);
+    move_uploaded_file($pass,"/team/img/");
 
     if (!empty($_FILES['image']['name'])) { //ファイルが選択されていれば$imageにファイル名を代入
-        move_uploaded_file($_FILES['image']['tmp_name'],"./img/$pass"); //imagesディレクトリにファイル保存
-        if (exif_imagetype($file)) { //画像ファイルかのチェック
+        move_uploaded_file($_FILES['image']['tmp_name'],"/team/img/$pass"); //imagesディレクトリにファイル保存
+        if (exif_imagetype($image)) { //画像ファイルかのチェック
             $message = '画像をアップロードしました';
             mysqli_query($conn, $query);
         } else {
