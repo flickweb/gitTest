@@ -24,7 +24,7 @@ $value = $_SESSION['worries'];
      <!-- FIX THIS PART -->
      <!-- 順番 -->
     <?php
-    $sql ="SELECT causer.name, cacategory.ctnum,  COUNT(*) AS match_count
+    $sql ="SELECT causer.realname, cacategory.ctnum,  COUNT(*) AS match_count
     FROM scategory
     INNER JOIN cacategory ON scategory.ctnum = cacategory.ctnum
     INNER JOIN causer ON cacategory.caid = causer.caid
@@ -39,7 +39,7 @@ $value = $_SESSION['worries'];
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '<a href="/team/home/home.php">'.$row['name'] . "</a>". "<br>";
+                echo '<a href="/team/home/home.php">'.$row['realname'] . "</a>". "<br>";
             }
         } else {
             echo "No matching CAusers found.";
