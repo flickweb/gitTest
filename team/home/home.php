@@ -76,6 +76,11 @@ if (empty($_SESSION['worries']) || in_array("6", $_SESSION['worries'])) {
         }
     } ?><br>
     <a href="/team/diagnose/diagnose5.php">悩みの変更</a>
+
+
+    <a href="../svichat/index.php">chat</a>
+    <a href="../calendar/schedulekanri.php">calendar</a>
+    
 </body>
 
 </html>
