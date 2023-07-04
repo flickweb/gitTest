@@ -4,8 +4,10 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+$caid = $_SESSION['CAid'];
+
 // 保存先のディレクトリパス
-$targetDir = "./img";
+$targetDir = "./";
 
 // アップロードされたファイルの情報を取得
 $uploadedFile = $_FILES['image']['tmp_name'];
@@ -17,6 +19,10 @@ echo $fileName;
 // ファイルを指定のディレクトリに移動
 move_uploaded_file($uploadedFile, $targetFilePath);
 
-// 成功メッセージを表示
-echo "画像がアップロードされました。";
+$query = "UPDATE CAuser
+          SET filepass = '$fileName'
+          WHERE CAid = $caid";
+mysqli_query($conn, $query);
+
+header('Location: /team/cahome/cahome.php');
 ?>

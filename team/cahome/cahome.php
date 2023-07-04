@@ -3,6 +3,7 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+$caid = $_SESSION['CAid'];
 $wo = array();
 
 if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
@@ -29,6 +30,9 @@ if (empty($_SESSION['worries']) || in_array("6", $_SESSION['worries'])) {
     array_push($wo, "自己理解");
 }
 
+$query = "select filepass from causer where caid = $caid";
+$res = mysqli_query($conn, $query);
+$k = mysqli_fetch_array($res);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,13 +44,12 @@ if (empty($_SESSION['worries']) || in_array("6", $_SESSION['worries'])) {
 </head>
 
 <body>
-    <form method="post" action="upload.php" enctype="multipart/form-data">
-        <p>アップロード画像</p>
+    <form method="post" action="/team/img/upload.php" enctype="multipart/form-data">
         <input type="file" name="image">
         <button><input type="submit" name="upload" value="送信"></button>
     </form>
     
-    <img src="images/<?php echo $image['name']; ?>" width="300" height="300">
+    <img src="/team/img/<?php echo $k[0]; ?>" width="300" height="300">
 
     <p>名前</p>
     <?php echo $_SESSION['username']; ?>
