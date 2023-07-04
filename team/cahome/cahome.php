@@ -49,7 +49,7 @@ if (empty($_SESSION['worries']) || in_array("6", $_SESSION['worries'])) {
     <img src="images/<?php echo $image['name']; ?>" width="300" height="300">
 
     <p>名前</p>
-    <?php echo $_SESSION['name']; ?>
+    <?php echo $_SESSION['username']; ?>
 
     <p>性別</p>
     <?php if ($_SESSION['cagender'] == 1) {

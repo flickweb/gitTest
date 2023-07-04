@@ -4,31 +4,17 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
-echo $_FILES['image']['name'];
-echo $_FILES['image']['tmp_name'];
+// 保存先のディレクトリパス
+$targetDir = "/team/img/";
 
-if (isset($_POST['upload'])) { //送信ボタンが押された場合
-    $pass = $_FILES['image']['name'];
-    $caid = $_SESSION['CAid'];
-    $up = $_POST['upload'];
+// アップロードされたファイルの情報を取得
+$uploadedFile = $_FILES['image']['tmp_name'];
+$fileName = $_FILES['image']['name'];
+$targetFilePath = $targetDir . $fileName;
 
-    $image = uniqid(mt_rand(), true);//ファイル名をユニーク化
-    $image .= '.' . substr(strrchr($_FILES['image']['name'], '.'), 1);//アップロードされたファイルの拡張子を取得
-    $file = "images/$image";
+// ファイルを指定のディレクトリに移動
+move_uploaded_file($uploadedFile, $targetFilePath);
 
-
-    $query = "UPDATE causer SET filepass = $pass where caid = $caid";
-    mysqli_query($conn, $query);
-    move_uploaded_file($pass,"/team/img/");
-
-    if (!empty($_FILES['image']['name'])) { //ファイルが選択されていれば$imageにファイル名を代入
-        move_uploaded_file($_FILES['image']['tmp_name'],"/team/img/$pass"); //imagesディレクトリにファイル保存
-        if (exif_imagetype($image)) { //画像ファイルかのチェック
-            $message = '画像をアップロードしました';
-            mysqli_query($conn, $query);
-        } else {
-            $message = '画像ファイルではありません';
-        }
-    }
-}
+// 成功メッセージを表示
+echo "画像がアップロードされました。";
 ?>
