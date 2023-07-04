@@ -5,12 +5,14 @@ include("../functions.php");
 session_start();
 
 // 保存先のディレクトリパス
-$targetDir = "/team/img/";
+$targetDir = "./img";
 
 // アップロードされたファイルの情報を取得
 $uploadedFile = $_FILES['image']['tmp_name'];
 $fileName = $_FILES['image']['name'];
-$targetFilePath = $targetDir . $fileName;
+$targetFilePath = $targetDir.$fileName;
+echo $uploadedFile, "<br>";
+echo $fileName; 
 
 // ファイルを指定のディレクトリに移動
 move_uploaded_file($uploadedFile, $targetFilePath);
