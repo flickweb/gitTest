@@ -1,0 +1,73 @@
+nav.navbar{
+    background-color:whitesmoke;
+    width: 100%;
+    position: fixed;
+    margin : 0;
+    top : 0;
+    left : 0;
+}
+nav.navbar .navContainer .logoContainer #logo{
+    width: 5vw;
+    height: 5vw;
+    object-fit: cover;
+    overflow: hidden;
+}
+nav.navbar .navContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    height: 6vw;
+}
+nav.navbar .navContainer .nav-links{
+    display: flex;
+}
+
+nav.navbar .navContainer .nav-links ul li .connectBtnNav{
+    background-color: darkgrey;
+    border: none;
+    width: 7em;
+    height: 35px;
+    font-size: 0.9em;
+    font-weight: bold;
+    border-radius: 3px;
+    /* box-shadow: 0 1px 3px 0 darkgray, 0 1px 3px 0 black; */
+}
+
+nav.navbar .navContainer .nav-links ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* width: auto; */
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav.navbar .navContainer .nav-links ul li{
+    list-style: none;
+    margin: auto 13px;
+    padding: 0;
+}
+nav.navbar .navContainer .nav-links ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 1.4vw;
+    font-weight: bold;
+}
+nav.navbar .navContainer .nav-links .ulInside li{
+    width: 3px
+}
+
+nav.navbar .navContainer .nav-links .ulInside li .lang{
+    text-decoration: underline;
+}
+
+nav.navbar .navContainer .nav-links .ulInside li .lang:hover{
+    cursor: pointer;
+    color: crimson;
+    transition: 0.1s;
+}
+
+/* nav end */
