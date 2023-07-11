@@ -31,14 +31,17 @@ if (isset($_POST['man'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="diagnoseS.css">
 </head>
 
 <body>
-    <p>担当のカウンセラー</p>
+    <h2>担当のカウンセラー</h2>
     <form method="post" action="diagnose4.php">
-        <button type="submit" name="hcaman" value="1">男性</button></a><br>
-        <button type="submit" name="hcawoman" value="2">女性</button></a><br>
-        <button type="submit" name="hcaother" value="3">どちらでも</button></a><br>
+        <div class="button005">
+            <button type="submit" name="hcaman" value="1">男性</button></a><br>
+            <button type="submit" name="hcawoman" value="2">女性</button></a><br>
+            <button type="submit" name="hcaother" value="3">どちらでも</button></a><br>
+        </div>
     </form>
 </body>
 

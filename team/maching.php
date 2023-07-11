@@ -18,13 +18,15 @@ $value = $_SESSION['worries'];
 <html lang="ja">
 
 <head>
+    <link rel="stylesheet" href="/team/diagnose/diagnoseS.css">
 </head>
 
 <body>
-     <!-- FIX THIS PART -->
-     <!-- 順番 -->
+    <h2>あなたと相性がいいカウンセラー</h2>
+    <!-- FIX THIS PART -->
+    <!-- 順番 -->
     <?php
-    $sql ="SELECT causer.realname, cacategory.ctnum,  COUNT(*) AS match_count
+    $sql = "SELECT causer.realname, cacategory.ctnum,  COUNT(*) AS match_count
     FROM scategory
     INNER JOIN cacategory ON scategory.ctnum = cacategory.ctnum
     INNER JOIN causer ON cacategory.caid = causer.caid
@@ -32,14 +34,13 @@ $value = $_SESSION['worries'];
     GROUP BY causer.caid
     ORDER BY 
     CASE WHEN scategory.ctnum IN (" . implode(',', $value) . ") THEN 0 ELSE 1 END,
-    match_count DESC";
-    ;
+    match_count DESC";;
 
     if ($result = mysqli_query($conn, $sql)) {
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo '<a href="/team/home/home.php">'.$row['realname'] . "</a>". "<br>";
+                echo "<div class='button005'>" . '<a href="/team/home/home.php" class="btn btn--blue btn--emboss btn--cubic">' . $row['realname'] . "</a>" . "</div>" . "<br>";
             }
         } else {
             echo "No matching CAusers found.";
@@ -52,7 +53,9 @@ $value = $_SESSION['worries'];
     mysqli_close($conn);
     ?>
 
-<a href="/team/diagnose/diagnose5.php">変更<a>
+    <div class='button006'>
+        <a href="/team/diagnose/diagnose5.php" class="btn">変更する</a>
+    </div>
 
 </body>
 

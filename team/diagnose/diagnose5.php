@@ -35,19 +35,57 @@ if (isset($_POST['caman'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="diagnoseS.css">
 </head>
 
 <body>
     <form method="post" action="/team/diagnose/diagnose1111.php">
-        <p>相談したいテーマを選択してください(複数選択可)<br>
-            <input type="checkbox" name="worries[]" value="1" <?php if(empty($_SESSION['worries'])||in_array("1",$_SESSION['worries'])) echo 'checked'?>>恋愛<br>
-            <input type="checkbox" name="worries[]" value="2" <?php if(empty($_SESSION['worries'])||in_array("2",$_SESSION['worries'])) echo 'checked'?>>家族・親族<br>
-            <input type="checkbox" name="worries[]" value="3" <?php if(empty($_SESSION['worries'])||in_array("3",$_SESSION['worries'])) echo 'checked'?>>勉強の不安<br>
-            <input type="checkbox" name="worries[]" value="4" <?php if(empty($_SESSION['worries'])||in_array("4",$_SESSION['worries'])) echo 'checked'?>>漠然とした不安<br>
-            <input type="checkbox" name="worries[]" value="5" <?php if(empty($_SESSION['worries'])||in_array("5",$_SESSION['worries'])) echo 'checked'?>>対人関係<br>
-            <input type="checkbox" name="worries[]" value="6" <?php if(empty($_SESSION['worries'])||in_array("6",$_SESSION['worries'])) echo 'checked'?>>自己理解<br>
-        </p>
-        <p><input type="submit" name="send" value="送信"></p>
+    <h2>得意なテーマを選択してください(複数選択可)</h2><br>
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="1" 
+            <?php if(empty($_SESSION['worries'])||in_array("1",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">恋愛面</span>
+        </label>
+
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="2"
+            <?php if(empty($_SESSION['worries'])||in_array("2",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">家族・親族</span>
+        </label>
+
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="3"
+            <?php if(empty($_SESSION['worries'])||in_array("3",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">勉強</span>
+        </label>
+
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="4"
+            <?php if(empty($_SESSION['worries'])||in_array("4",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">メンタルヘルス（漠然とした不安</span>
+        </label>
+
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="5"
+            <?php if(empty($_SESSION['worries'])||in_array("5",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">対人関係</span>
+        </label>
+
+        <label class="ECM_CheckboxInput">
+            <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="6"
+            <?php if(empty($_SESSION['worries'])||in_array("6",$_SESSION['worries'])) echo 'checked'?>>
+            <span class="ECM_CheckboxInput-DummyInput"></span>
+            <span class="ECM_CheckboxInput-LabelText">自己理解</span>
+        </label>
+        
+        <div class="button005">
+            <button type="submit" name="send">送信</button>
+        </div>
     </form>
 
 </body>
