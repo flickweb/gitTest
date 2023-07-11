@@ -49,7 +49,7 @@ $k = mysqli_fetch_array($res);
         <button><input type="submit" name="upload" value="送信"></button>
     </form>
     
-    <img src="/team/img/<?php echo $k[0]; ?>" width="300" height="300">
+    <img src="/team/img/<?php echo $k[0]; ?>" width="180" height="180" style = "border-radius: 50%;">
 
     <p>名前</p>
     <?php echo $_SESSION['username']; ?>
