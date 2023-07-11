@@ -2,6 +2,40 @@
 include("../dbConnect.php");
 include("../functions.php");
 session_start();
+
+$wo = array();
+
+if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
+    array_push($wo, "恋愛");
+}
+
+if (empty($_SESSION['worries']) || in_array("2", $_SESSION['worries'])) {
+    array_push($wo, "家族・親族");
+}
+
+if (empty($_SESSION['worries']) || in_array("3", $_SESSION['worries'])) {
+    array_push($wo, "勉強の不安");
+}
+
+if (empty($_SESSION['worries']) || in_array("4", $_SESSION['worries'])) {
+    array_push($wo, "漠然とした不安");
+}
+
+if (empty($_SESSION['worries']) || in_array("5", $_SESSION['worries'])) {
+    array_push($wo, "対人関係");
+}
+
+if (empty($_SESSION['worries']) || in_array("6", $_SESSION['worries'])) {
+    array_push($wo, "自己理解");
+}
+
+
+$n = $_SESSION['name'];
+$ssid = $_SESSION['Sid'];
+$value = $_SESSION['worries'];
+$gender = $_SESSION['gender'];
+?>
+
 ?>
 
 <!DOCTYPE html>
@@ -31,31 +65,94 @@ session_start();
         </div>
     </nav>
 
+    <!-- LEFT START -->
+
+    <?php
+
+    $findCounselor = "SELECT causer.realname, causer.gender, cacategory.ctnum,  COUNT(*) AS match_count
+    FROM scategory
+    FROM scategory
+    INNER JOIN cacategory ON scategory.ctnum = cacategory.ctnum
+    INNER JOIN causer ON cacategory.caid = causer.caid
+    WHERE scategory.sid = $ssid
+    GROUP BY causer.caid
+    ORDER BY 
+    CASE WHEN scategory.ctnum IN (" . implode(',', $value) . ") THEN 0 ELSE 1 END,
+    match_count DESC";
+    ?>
+
+
     <div class="hero">
         <div class="heroLeft">
-            <div class="heroBoxLeft"></div>
-        </div>
-        <div class="heroRight">
-        <div class="heroBoxRight">
-                <div class="iconBox">
-                <i class="fa-regular fa-messages-question fa-4x"></i>
+            <div class="heroBoxLeft">
+                <div class="titleBoxLeft">
+                    <h2 class="title">あなたのカウンセラー</h2>
                 </div>
-                <div class="textBox">
-                    <div class="titleBox">
-                    <h3>チャット</h3>
+                <div class="contentBoxLeft">
+                    <div class="imageBoxLeft"></div>
+                    <div class="infoBoxLeft">
+                        <div class="infoBoxName">
+                            <h3>
+                                Felix
+                            </h3>
+                        </div>
+                        <div class="infoBoxStatus">
+                            <div class="infoBoxContentUp">
+                                <div class="infoBoxOne">
+                                    <div class="infoBoxDetailName">
+                                        <h3>特徴</h3>
+                                    </div>
+                                    <div class="infoBoxDetail"></div>
+                                </div>
+                                <div class="infoBoxTwo">
+                                    <div class="infoBoxDetailName">
+                                        <h3>性別</h3>
+                                    </div>
+                                    <div class="infoBoxDetail"></div>
+                                </div>
+                            </div>
+                            <div class="infoBoxContentDown">
+                                <div class="infoBoxOne">
+                                    <div class="infoBoxDetailName">
+                                        <h3>年齢</h3>
+                                    </div>
+                                    <div class="infoBoxDetail"></div>
+                                </div>
+                                <div class="infoBoxTwo"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="descBox">
-                    <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT START -->
+
+        <div class="heroRight">
+            <div class="heroBoxRight">
+                <div class="iconBoxChat">
+                    <div class="icon">
+                        <i class="fa-regular fa-calendar-check fa-4x margin-top-sm"></i>
+                    </div>
+                </div>
+                <div class="textBoxChat">
+                    <div class="titleBoxChat">
+                        <h3>チャット</h3>
+                    </div>
+                    <div class="descBoxChat">
+                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
                     </div>
                 </div>
             </div>
             <div class="heroBoxRight">
                 <div class="iconBox">
-                <i class="fa-regular fa-calendar-check fa-4x"></i>
+                    <div class="icon">
+                        <i class="fa-regular fa-calendar-check fa-4x"></i>
+                    </div>
                 </div>
                 <div class="textBox">
                     <div class="titleBox">
-                    <h3>予約</h3>
+                        <h3>予約</h3>
                     </div>
                     <div class="descBox">
                         <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
@@ -63,13 +160,17 @@ session_start();
                 </div>
             </div>
             <div class="heroBoxRight">
-                <div class="iconBox"><i class="fa-regular fa-user fa-4x"></i></div>
+                <div class="iconBox">
+                    <div class="icon">
+                        <i class="fa-regular fa-user fa-4x"></i>
+                    </div>
+                </div>
                 <div class="textBox">
                     <div class="titleBox">
                         <h3>プロフィール</h3>
                     </div>
                     <div class="descBox">
-                    <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
                     </div>
                 </div>
             </div>
