@@ -55,8 +55,8 @@ video {
 /* p2p-data styles */
 .p2p-data {
   display: grid;
-  /* grid-template-columns: 30% 1fr; */
   grid-template-columns: 260px 500px 200px;
+  /* grid-template-columns: 30% 1fr; */
   margin: 0 8px;
 }
 

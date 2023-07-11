@@ -20,7 +20,6 @@ const Peer = window.Peer;
   
   console.log(param);
   const id = param;
-  const name = param2;
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -60,12 +59,12 @@ const Peer = window.Peer;
       if(i == 0){
         var videoTrack = localStream.getVideoTracks()[0];
         videoTrack.enabled = true;
-        document.getElementById('cameraimg').src = 'camera.jpg';
+        document.getElementById('cameraimg').src = 'camera_off.jpg';
         i = 1;
       }else if(i == 1){
         var videoTrack = localStream.getVideoTracks()[0];
         videoTrack.enabled = false;
-        document.getElementById('cameraimg').src = 'camera_off.jpg';
+        document.getElementById('cameraimg').src = 'camera.jpg';
         i = 0;
       }
     });
@@ -76,12 +75,12 @@ const Peer = window.Peer;
       if(j == 0){
         var audioTrack = localStream.getAudioTracks()[0];
         audioTrack.enabled = true;
-        document.getElementById('micimg').src = 'mic.jpg';
+        document.getElementById('micimg').src = 'mic_off.jpg';
         j = 1;
       }else if(j == 1){
         var audioTrack = localStream.getAudioTracks()[0];
         audioTrack.enabled = false;
-        document.getElementById('micimg').src = 'mic_off.jpg';
+        document.getElementById('micimg').src = 'mic.jpg';
         j = 0;
       }
     });
@@ -129,7 +128,7 @@ const Peer = window.Peer;
     });
 
     dataConnection.on('data', data => {
-      messages.textContent += `カウンセラー: ${data}\n`;
+      messages.textContent += `生徒: ${data}\n`;
     });
 
     dataConnection.once('close', () => {
@@ -146,11 +145,13 @@ const Peer = window.Peer;
       const data = localText.value;
       dataConnection.send(data);
 
-      messages.textContent += `${name}: ${data}\n`;
+      messages.textContent += `カウンセラー: ${data}\n`;
       localText.value = '';
     }
   });
 
+
+  
 
   // peer.once('open', id => (localId.textContent = id));
   console.log(id);
@@ -162,7 +163,7 @@ const Peer = window.Peer;
   // Register connected peer handler
   peer.on('connection', dataConnection => {
     dataConnection.once('open', async () => {
-      messages.textContent += `ここにチャットが表示されます\n`;
+      messages.textContent += `=== DataConnection has been opened ===\n`;
 
       sendTrigger.addEventListener('click', onClickSend);
     });
