@@ -40,7 +40,7 @@ $value = $_SESSION['worries'];
         $resultCheck = mysqli_num_rows($result);
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='button005'>" . '<a href="/team/home/home.php" class="btn btn--blue btn--emboss btn--cubic">' . $row['realname'] . "</a>" . "</div>" . "<br>";
+                echo "<div class='button005'>" . '<button type="submit">' . $row['realname'] . "</a>" . "</div>" . "<br>";
             }
         } else {
             echo "No matching CAusers found.";
