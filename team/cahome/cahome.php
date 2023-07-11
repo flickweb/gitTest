@@ -77,6 +77,8 @@ $k = mysqli_fetch_array($res);
         }
     } ?><br>
     <a href="/team/casinnki/diagnose5_CA.php">得意分野の変更</a>
+    <a href="../cavichat/index.php">chat</a>
+    <a href="../calendar/schedulekanri.php">calendar</a>
 </body>
 
 </html>

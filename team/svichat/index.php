@@ -8,7 +8,7 @@ define( "DB_CHARSET", "utf8mb4" );
 session_start();
 
 //$idの中身をセッションで持ってきたidに変更してください
-$id = 2;
+$id = $_SESSION["Sid"];
 
 $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 if( ! $instance -> connect_error ) {
