@@ -76,7 +76,7 @@ if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
             <span class="ECM_CheckboxInput-DummyInput"></span>
             <span class="ECM_CheckboxInput-LabelText">自己理解</span>
         </label>
-        </p>
+        
         <div class="button005">
             <button type="submit" name="send">送信</button>
         </div>

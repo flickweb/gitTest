@@ -1,6 +1,6 @@
 <?php
 include("../dbConnect.php");
-include("../functions.php");
+include("../functionsCA.php");
 session_start();
 
 $caid = $_SESSION['CAid'];

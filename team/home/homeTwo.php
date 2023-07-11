@@ -3,7 +3,32 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+$mach = $_POST["mach"];
 $wo = array();
+$wo2 = array();
+
+$sql = "SELECT caid from causer where realname = '$mach'";
+$res = mysqli_query($conn, $sql);
+$k = mysqli_fetch_array($res);
+
+$sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
+$res2 = mysqli_query($conn, $sql2);
+$k2 = mysqli_fetch_array($res2);
+
+if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}
+
 
 if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
     array_push($wo, "恋愛");
@@ -36,8 +61,6 @@ $value = $_SESSION['worries'];
 $gender = $_SESSION['gender'];
 ?>
 
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,10 +73,9 @@ $gender = $_SESSION['gender'];
 </head>
 
 <body>
-    <nav class="navbar">
+    <!-- <nav class="navbar">
         <div class="navContainer">
             <div class="logoContainer">
-                <!-- <img src="assets/logoDemo.jpg" alt="logo" id="logo" /> -->
                 <h1>Mimamoru-kun</h1>
             </div>
             <div class="nav-links">
@@ -63,7 +85,7 @@ $gender = $_SESSION['gender'];
                 </ul>
             </div>
         </div>
-    </nav>
+    </nav> -->
 
     <!-- LEFT START -->
 
@@ -93,7 +115,7 @@ $gender = $_SESSION['gender'];
                     <div class="infoBoxLeft">
                         <div class="infoBoxName">
                             <h3>
-                                Felix
+                                <?php echo $mach; ?>
                             </h3>
                         </div>
                         <div class="infoBoxStatus">
@@ -102,7 +124,11 @@ $gender = $_SESSION['gender'];
                                     <div class="infoBoxDetailName">
                                         <h3>特徴</h3>
                                     </div>
-                                    <div class="infoBoxDetail"></div>
+                                    <div class="infoBoxDetail">
+                                        <?php echo $k[0]; ?><br>
+                                        <?php echo $k2[0]; ?><br>
+                                    </div>
+                                    
                                 </div>
                                 <div class="infoBoxTwo">
                                     <div class="infoBoxDetailName">
