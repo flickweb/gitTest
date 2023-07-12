@@ -17,6 +17,9 @@ if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
   echo "ようこそ" . $_SESSION['username'] . "さん";
 }
 
+$sql2 = "DELETE FROM cacategory WHERE caid = $caid";
+mysqli_query($conn, $sql2);
+
 $sql = "SELECT * FROM Cacategory WHERE Caid = $caid";
 $res = mysqli_query($conn, $sql);
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
