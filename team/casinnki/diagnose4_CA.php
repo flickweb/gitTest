@@ -39,7 +39,7 @@ if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
 </head>
 
 <body>
-    <form method="post" action="diagnose1111_CA.php">
+    <form method="post" action="/team/casinnki/diagnose1111_CA.php">
         <h2>得意なテーマを選択してください(複数選択可)</h2><br>
         <label class="ECM_CheckboxInput">
             <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="1">

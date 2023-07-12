@@ -18,18 +18,16 @@ if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['CAid'])) {
 }
 
 $sql = "SELECT * FROM Cacategory WHERE Caid = $caid";
-mysqli_query($conn, $sql);
-if (!isset($sql)) {
+$res = mysqli_query($conn, $sql);
 if (isset($_POST['worries']) && is_array($_POST['worries'])) {
   foreach ($_POST['worries'] as $value) {
-      echo "{$value}, ";
-      $cacategoryQuery = "INSERT into CAcategory(caid, ctnum) VALUES((select caid from CAuser where caid=$caid), $value)";
-			var_dump($cacategoryQuery);
-      mysqli_query($conn, $cacategoryQuery);
+    echo "{$value}, ";
+    $cacategoryQuery = "INSERT into CAcategory VALUES($caid, $value)";
+    var_dump($cacategoryQuery);
+    mysqli_query($conn, $cacategoryQuery);
   }
 }
 echo '</p>';
-}
 
 
 
