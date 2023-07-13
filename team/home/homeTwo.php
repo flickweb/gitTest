@@ -3,30 +3,36 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
-$mach = $_POST["mach"];
+if (isset($_POST["mach"])) {
+
+    // session_destroy();
+
+    $_SESSION["mach"] = $_POST["mach"];
+    $mach = $_SESSION["mach"];
+
+    $sql = "SELECT caid from causer where realname = '$mach'";
+    $res = mysqli_query($conn, $sql);
+    $k = mysqli_fetch_array($res);
+
+    $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
+    $res2 = mysqli_query($conn, $sql2);
+    $k2 = mysqli_fetch_array($res2);
+}
+
 $wo = array();
 $wo2 = array();
 
-$sql = "SELECT caid from causer where realname = '$mach'";
-$res = mysqli_query($conn, $sql);
-$k = mysqli_fetch_array($res);
-
-$sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
-$res2 = mysqli_query($conn, $sql2);
-$k2 = mysqli_fetch_array($res2);
-
-if($k2[0] = 1){
-
-}if($k2[0] = 1){
-
-}if($k2[0] = 1){
-
-}if($k2[0] = 1){
-
-}if($k2[0] = 1){
-
-}if($k2[0] = 1){
-
+if ($k2[0] = 1) {
+}
+if ($k2[0] = 1) {
+}
+if ($k2[0] = 1) {
+}
+if ($k2[0] = 1) {
+}
+if ($k2[0] = 1) {
+}
+if ($k2[0] = 1) {
 }
 
 
@@ -128,7 +134,7 @@ $gender = $_SESSION['gender'];
                                         <?php echo $k[0]; ?><br>
                                         <?php echo $k2[0]; ?><br>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="infoBoxTwo">
                                     <div class="infoBoxDetailName">
@@ -155,7 +161,7 @@ $gender = $_SESSION['gender'];
         <!-- RIGHT START -->
 
         <div class="heroRight">
-            <div class="heroBoxRight">
+            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
                 <div class="iconBoxChat">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x margin-top-sm"></i>
@@ -163,14 +169,15 @@ $gender = $_SESSION['gender'];
                 </div>
                 <div class="textBoxChat">
                     <div class="titleBoxChat">
-                        <input type="button" onclick="location.href='../svichat/index.php'" value="チャット" class="chat">
+                        <input type="button" value="チャット" class="chat">
                     </div>
                     <div class="descBoxChat">
                         <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
                     </div>
                 </div>
             </div>
-            <div class="heroBoxRight">
+            <!-- リンク変わって -->
+            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x"></i>
@@ -185,7 +192,8 @@ $gender = $_SESSION['gender'];
                     </div>
                 </div>
             </div>
-            <div class="heroBoxRight">
+            <!-- リンク変わって -->
+            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-user fa-4x"></i>
