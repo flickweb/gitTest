@@ -67,7 +67,7 @@ $gender = $_SESSION['gender'];
             <div class="nav-links">
                 <ul>
                     <li><a href="profile.php">プロフィール</a></li>
-                    <li><a href="#logout">ログアウト</a></li>
+                    <li><a href="../logout.php">ログアウト</a></li>
                 </ul>
             </div>
         </div>
