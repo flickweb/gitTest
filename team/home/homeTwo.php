@@ -3,11 +3,12 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+echo $_SESSION["mach"];
 if (isset($_POST["mach"])) {
-
-    // session_destroy();
-
     $_SESSION["mach"] = $_POST["mach"];
+}
+if (isset($_SESSION["mach"])) {
+    // session_destroy();
     $mach = $_SESSION["mach"];
 
     $sql = "SELECT caid from causer where realname = '$mach'";
