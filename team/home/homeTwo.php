@@ -4,11 +4,12 @@ include("../functions.php");
 session_start();
 
 //変更と追加
-if(isset($_SESSION['mach'])){
-    $mach = $_SESSION['mach'];
-}else{
-    $mach = $_POST["mach"];
+if (isset($_POST["mach"])) {
+    $_SESSION["mach"] = $_POST["mach"];
 }
+if (isset($_SESSION["mach"])) {
+    // session_destroy();
+    $mach = $_SESSION["mach"];
 
     $sql = "SELECT caid from causer where realname = '$mach'";
     $res = mysqli_query($conn, $sql);
@@ -16,7 +17,8 @@ if(isset($_SESSION['mach'])){
 
     $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
     $res2 = mysqli_query($conn, $sql2);
-    $k2[] = mysqli_fetch_array($res2);
+    $k2 = mysqli_fetch_array($res2);
+}
 
 
 $wo = array();

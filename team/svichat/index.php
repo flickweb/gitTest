@@ -8,12 +8,9 @@ define( "DB_CHARSET", "utf8mb4" );
 session_start();
 
 //$idの中身をセッションで持ってきたidに変更してください
-$id = $_SESSION["Sid"];
+echo $_SESSION["mach"];
 
-//追加
-$mach = $_SESSION['mach'];
-$_SESSION['mach'] = $mach;
-//
+$id = $_SESSION["Sid"];
 
 $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 if( ! $instance -> connect_error ) {
@@ -41,6 +38,7 @@ $param2 = 'S'.$param[0]["Sid"];
 $param_json = json_encode($param2); //JSONエンコード
 
 $param_json2 = json_encode($name); //JSONエンコード
+
 
 ?>
 
