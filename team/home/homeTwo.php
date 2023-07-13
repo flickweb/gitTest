@@ -13,11 +13,11 @@ if (isset($_SESSION["mach"])) {
 
     $sql = "SELECT caid from causer where realname = '$mach'";
     $res = mysqli_query($conn, $sql);
-    $k = mysqli_fetch_array($res);
+    $k = mysqli_fetch_assoc($res);
 
-    $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
-    $res2 = mysqli_query($conn, $sql2);
-    $k2 = mysqli_fetch_array($res2);
+    // $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
+    // $res2 = mysqli_query($conn, $sql2);
+    // $k2 = mysqli_fetch_array($res2);
 }
 
 
@@ -28,23 +28,30 @@ $sql = "SELECT caid from causer where realname = '$mach'";
 $res = mysqli_query($conn, $sql);
 $k = mysqli_fetch_array($res);
 
-$sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
+$sql2 = "SELECT category.category from cacategory 
+inner join category on cacategory.ctnum = category.ctnum
+where caid = $k[0]";
 $res2 = mysqli_query($conn, $sql2);
-$k2 = mysqli_fetch_array($res2);
+$k2 = mysqli_fetch_assoc($res2);
+    
 
-if($k2[0] = 1){
+$sql3 = "SELECT gender from causer where realname = '$mach'";
+$res3 = mysqli_query($conn, $sql3);
+$k3 = mysqli_fetch_assoc($res3);
 
-}if($k2[0] = 1){
+// if($k2[0] = 1){
 
-}if($k2[0] = 1){
+// }if($k2[0] = 1){
 
-}if($k2[0] = 1){
+// }if($k2[0] = 1){
 
-}if($k2[0] = 1){
+// }if($k2[0] = 1){
 
-}if($k2[0] = 1){
+// }if($k2[0] = 1){
 
-}
+// }if($k2[0] = 1){
+
+// }
 
 
 if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
@@ -90,19 +97,24 @@ $gender = $_SESSION['gender'];
 </head>
 
 <body>
-    <!-- <nav class="navbar">
+<nav class="navbar">
         <div class="navContainer">
             <div class="logoContainer">
-                <h1>Mimamoru-kun</h1>
+                <!-- <img src="assets/logoDemo.jpg" alt="logo" id="logo" /> -->
+                <a href="/team/home/homeTwo.php">
+                    <h1>Mimamoru-kun</h1>
+                </a>
             </div>
+
+
             <div class="nav-links">
                 <ul>
-                    <li><a href="#profile">プロフィール</a></li>
-                    <li><a href="#logout">ログアウト</a></li>
+                    <li><a href="../profile/profile.php">プロフィール</a></li>
+                    <li><a href="../logout.php">ログアウト</a></li>
                 </ul>
             </div>
         </div>
-    </nav> -->
+    </nav>
 
     <!-- LEFT START -->
 
@@ -142,8 +154,11 @@ $gender = $_SESSION['gender'];
                                         <h3>特徴</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        <?php echo $k[0]; ?><br>
-                                        <?php foreach ($k2 as $k2){print $k2."<br>";}; ?><br>
+                                        <?php 
+                                        foreach ($k2 as $value) {
+                                            echo $value, "\n";
+                                        } 
+                                        ?><br>
                                     </div>
                                     
                                 </div>
@@ -151,7 +166,9 @@ $gender = $_SESSION['gender'];
                                     <div class="infoBoxDetailName">
                                         <h3>性別</h3>
                                     </div>
-                                    <div class="infoBoxDetail"></div>
+                                    <div class="infoBoxDetail">
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="infoBoxContentDown">
@@ -175,7 +192,9 @@ $gender = $_SESSION['gender'];
             <div class="heroBoxRight"  onclick="location.href='../svichat/index.php'">
                 <div class="iconBoxChat">
                     <div class="icon">
-                        <i class="fa-regular fa-calendar-check fa-4x margin-top-sm"></i>
+                        
+                        <i class="fa-regular fa-message fa-4x"></i>
+                        
                     </div>
                 </div>
                     <div class="textBoxChat">
@@ -191,7 +210,7 @@ $gender = $_SESSION['gender'];
             <div class="heroBoxRight"  onclick="location.href='../calender/test2.php'">
                 <div class="iconBox">
                     <div class="icon">
-                        <i class="fa-regular fa-calendar-check fa-4x"></i>
+                        <i class="fa-regular fa-calendar-check fa-4x"></i>                        
                     </div>
                 </div>
                 <div class="textBox">

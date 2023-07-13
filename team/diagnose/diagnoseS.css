@@ -101,7 +101,7 @@ h2 {
 }
 
 .ECM_CheckboxInput-Input:checked+.ECM_CheckboxInput-DummyInput {
-    background: rgba(107, 26, 250, 1);
+    background: rgb(255, 145, 0);
 }
 
 .ECM_CheckboxInput-Input:checked+.ECM_CheckboxInput-DummyInput::before {
