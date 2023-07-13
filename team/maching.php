@@ -12,6 +12,10 @@ if (!isset($_SESSION['name'], $_SESSION['pass'], $_SESSION['Sid'])) {
 $n = $_SESSION['name'];
 $ssid = $_SESSION['Sid'];
 $value = $_SESSION['worries'];
+
+//追加
+unset($_SESSION['mach']);
+//
 ?>
 
 <!DOCTYPE html>

@@ -3,6 +3,11 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
+//追加
+$mach = $_SESSION['mach'];
+$_SESSION['mach'] = $mach;
+//
+
 $wo = array();
 
 if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
