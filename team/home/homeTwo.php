@@ -17,7 +17,7 @@ if (isset($_SESSION["mach"])) {
 
     $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
     $res2 = mysqli_query($conn, $sql2);
-    $k2 = mysqli_fetch_array($res2);
+    $k2[] = mysqli_fetch_array($res2);
 }
 
 $wo = array();
@@ -133,7 +133,7 @@ $gender = $_SESSION['gender'];
                                     </div>
                                     <div class="infoBoxDetail">
                                         <?php echo $k[0]; ?><br>
-                                        <?php echo $k2[0]; ?><br>
+                                        <?php foreach ($k2 as $k2){print $k2."<br>";}; ?><br>
                                     </div>
 
                                 </div>
