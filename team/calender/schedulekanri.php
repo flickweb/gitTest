@@ -24,7 +24,8 @@
       $instance -> close();
     }
 
-  $Sid = 1;
+  $Sid = $_SESSION["id"];
+  $_SESSION['id'] = $Sid;
 
   $da = date('Y-m-d');
 

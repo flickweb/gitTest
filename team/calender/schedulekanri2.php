@@ -47,7 +47,8 @@
         $num = $re["CAid"];
     }
 
-    $sid = 1;
+    $sid = $_SESSION["id"];
+    $_SESSION['id'] = $sid;
 
     $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
     if( ! $instance -> connect_error ) {

@@ -13,6 +13,8 @@
     $_SESSION['mach'] = $mach;
     //
 
+    $id = $_SESSION["Sid"];
+    $_SESSION['id'] = $id;
 
     $instance1 = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 
@@ -22,7 +24,7 @@
                 FROM Suser as s
                 JOIN yoyaku as y ON (s.Sid = y.Sid)
                 JOIN CAuser as ca ON (y.CAid = ca.CAid)
-                WHERE s.Sid =  '1'
+                WHERE s.Sid =  '$id'
                 ORDER BY y.data, y.time;";
         if($kekka = $instance1 -> query($sql)){
             //SQLが成功した時の処理
@@ -34,17 +36,18 @@
         }
         $instance1 -> close();
     }
-
-    foreach($result["resu"] as $re) {
-        $data = $re["data"];
-        $name = $re["username"];
-        $time = $re["time"];
-
-        $dai[] = $data;
-        $nam[] = $name;
-        $tim[] = $time;
+    if(isset($result["resu"])){
+        foreach($result["resu"] as $re) {
+            $data = $re["data"];
+            $name = $re["username"];
+            $time = $re["time"];
+    
+            $dai[] = $data;
+            $nam[] = $name;
+            $tim[] = $time;
+        }
     }
-
+    
     for($u = 0; $u < 31; $u++) {
         $dai[] = 0;
     }
