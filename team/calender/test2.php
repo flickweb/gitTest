@@ -8,6 +8,12 @@
     define( "DB_NAME", "studb" );
     define( "DB_CHARSET", "utf8mb4" );
 
+    //追加
+    $mach = $_SESSION['mach'];
+    $_SESSION['mach'] = $mach;
+    //
+
+
     $instance1 = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 
     if( ! $instance1 -> connect_error ) {

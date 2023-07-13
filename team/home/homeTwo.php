@@ -3,14 +3,14 @@ include("../dbConnect.php");
 include("../functions.php");
 session_start();
 
-echo $_SESSION["mach"];
-if (isset($_POST["mach"])) {
-    $_SESSION["mach"] = $_POST["mach"];
+//変更と追加
+if(isset($_SESSION['mach'])){
+    $mach = $_SESSION['mach'];
+}else{
+    $mach = $_POST["mach"];
 }
-if (isset($_SESSION["mach"])) {
-    // session_destroy();
-    $mach = $_SESSION["mach"];
 
+<<<<<<< HEAD
     $sql = "SELECT caid from causer where realname = '$mach'";
     $res = mysqli_query($conn, $sql);
     $k = mysqli_fetch_array($res);
@@ -19,21 +19,34 @@ if (isset($_SESSION["mach"])) {
     $res2 = mysqli_query($conn, $sql2);
     $k2[] = mysqli_fetch_array($res2);
 }
+=======
+$_SESSION['mach'] = $mach;
+//
+>>>>>>> origin/master
 
 $wo = array();
 $wo2 = array();
 
-if ($k2[0] = 1) {
-}
-if ($k2[0] = 1) {
-}
-if ($k2[0] = 1) {
-}
-if ($k2[0] = 1) {
-}
-if ($k2[0] = 1) {
-}
-if ($k2[0] = 1) {
+$sql = "SELECT caid from causer where realname = '$mach'";
+$res = mysqli_query($conn, $sql);
+$k = mysqli_fetch_array($res);
+
+$sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
+$res2 = mysqli_query($conn, $sql2);
+$k2 = mysqli_fetch_array($res2);
+
+if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
+}if($k2[0] = 1){
+
 }
 
 
@@ -135,7 +148,7 @@ $gender = $_SESSION['gender'];
                                         <?php echo $k[0]; ?><br>
                                         <?php foreach ($k2 as $k2){print $k2."<br>";}; ?><br>
                                     </div>
-
+                                    
                                 </div>
                                 <div class="infoBoxTwo">
                                     <div class="infoBoxDetailName">
@@ -162,29 +175,29 @@ $gender = $_SESSION['gender'];
         <!-- RIGHT START -->
 
         <div class="heroRight">
-            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
+            <div class="heroBoxRight">
                 <div class="iconBoxChat">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x margin-top-sm"></i>
                     </div>
                 </div>
-                <div class="textBoxChat">
-                    <div class="titleBoxChat">
-                        <input type="button" value="チャット" class="chat">
+                    <div class="textBoxChat" onclick="location.href='../svichat/index.php'">
+                        <div class="titleBoxChat">
+                            <input type="button" value="チャット" class="chat">
+                        </div>
+                        <div class="descBoxChat">
+                            <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        </div>
                     </div>
-                    <div class="descBoxChat">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
-                    </div>
-                </div>
+                
             </div>
-            <!-- リンク変わって -->
-            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
+            <div class="heroBoxRight">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x"></i>
                     </div>
                 </div>
-                <div class="textBox">
+                <div class="textBox" onclick="location.href='../calender/test2.php'">
                     <div class="titleBox">
                         <input type="button" value="予約" class="yoyaku">
                     </div>
@@ -193,14 +206,13 @@ $gender = $_SESSION['gender'];
                     </div>
                 </div>
             </div>
-            <!-- リンク変わって -->
-            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
+            <div class="heroBoxRight">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-user fa-4x"></i>
                     </div>
                 </div>
-                <div class="textBox">
+                <div class="textBox" onclick="location.href='../profile/profile.php'">
                     <div class="titleBox">
                         <input type="button" value="プロフィール" class="profile">
                     </div>
