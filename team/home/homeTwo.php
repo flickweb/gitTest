@@ -163,7 +163,7 @@ $gender = $_SESSION['gender'];
                 </div>
                 <div class="textBoxChat">
                     <div class="titleBoxChat">
-                        <h3>チャット</h3>
+                        <input type="button" onclick="location.href='../svichat/index.php'" value="チャット" class="chat">
                     </div>
                     <div class="descBoxChat">
                         <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
@@ -178,7 +178,7 @@ $gender = $_SESSION['gender'];
                 </div>
                 <div class="textBox">
                     <div class="titleBox">
-                        <h3>予約</h3>
+                        <input type="button" value="予約" class="yoyaku">
                     </div>
                     <div class="descBox">
                         <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
@@ -193,7 +193,7 @@ $gender = $_SESSION['gender'];
                 </div>
                 <div class="textBox">
                     <div class="titleBox">
-                        <h3>プロフィール</h3>
+                        <input type="button" value="プロフィール" class="profile">
                     </div>
                     <div class="descBox">
                         <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
