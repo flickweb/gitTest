@@ -10,7 +10,6 @@ if(isset($_SESSION['mach'])){
     $mach = $_POST["mach"];
 }
 
-<<<<<<< HEAD
     $sql = "SELECT caid from causer where realname = '$mach'";
     $res = mysqli_query($conn, $sql);
     $k = mysqli_fetch_array($res);
@@ -18,11 +17,7 @@ if(isset($_SESSION['mach'])){
     $sql2 = "SELECT ctnum from cacategory where caid = $k[0]";
     $res2 = mysqli_query($conn, $sql2);
     $k2[] = mysqli_fetch_array($res2);
-}
-=======
-$_SESSION['mach'] = $mach;
-//
->>>>>>> origin/master
+
 
 $wo = array();
 $wo2 = array();
@@ -175,13 +170,13 @@ $gender = $_SESSION['gender'];
         <!-- RIGHT START -->
 
         <div class="heroRight">
-            <div class="heroBoxRight">
+            <div class="heroBoxRight"  onclick="location.href='../svichat/index.php'">
                 <div class="iconBoxChat">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x margin-top-sm"></i>
                     </div>
                 </div>
-                    <div class="textBoxChat" onclick="location.href='../svichat/index.php'">
+                    <div class="textBoxChat">
                         <div class="titleBoxChat">
                             <input type="button" value="チャット" class="chat">
                         </div>
@@ -191,13 +186,13 @@ $gender = $_SESSION['gender'];
                     </div>
                 
             </div>
-            <div class="heroBoxRight">
+            <div class="heroBoxRight"  onclick="location.href='../calender/test2.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x"></i>
                     </div>
                 </div>
-                <div class="textBox" onclick="location.href='../calender/test2.php'">
+                <div class="textBox">
                     <div class="titleBox">
                         <input type="button" value="予約" class="yoyaku">
                     </div>
@@ -206,13 +201,13 @@ $gender = $_SESSION['gender'];
                     </div>
                 </div>
             </div>
-            <div class="heroBoxRight">
+            <div class="heroBoxRight" onclick="location.href='../profile/profile.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-user fa-4x"></i>
                     </div>
                 </div>
-                <div class="textBox" onclick="location.href='../profile/profile.php'">
+                <div class="textBox">
                     <div class="titleBox">
                         <input type="button" value="プロフィール" class="profile">
                     </div>
