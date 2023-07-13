@@ -76,7 +76,7 @@ $param_json2 = json_encode($name); //JSONエンコード
         </div>
 
         <div class="btn">
-          <form action="/team/home/home.php" method="post">
+          <form action="/team/home/homeTwo.php" method="post">
           <!-- <button type="submit" id="next">&laquo; -->
           <button class="btn" type="submit" id="prev">ホームに戻る</button>
           </form>
