@@ -4,7 +4,7 @@ include("../functionsCA.php");
 session_start();
 
 
-$g = $_SESSION['gender'];
+$g = $_SESSION['cagender'];
 $n = $_SESSION['username'];
 $p = $_SESSION['pass'];
 $caid = $_SESSION['CAid'];
@@ -38,7 +38,7 @@ echo '</p>';
 $query = "UPDATE CAuser
           SET gender = $g
           WHERE CAid = $caid";
-$res = mysqli_query($conn, $query);
+mysqli_query($conn, $query);
 
 $newCAid = mysqli_insert_id($conn);
 $_SESSION['a'] = $newCAid;

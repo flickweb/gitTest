@@ -111,11 +111,11 @@ $k = mysqli_fetch_array($res);
                                         <h3>性別</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        <?php if ($_SESSION['gender'] == 1) {
+                                        <?php if ($_SESSION['cagender'] == 1) {
                                             echo "男";
-                                        } elseif ($_SESSION['gender'] == 2) {
+                                        } elseif ($_SESSION['cagender'] == 2) {
                                             echo "女";
-                                        } elseif ($_SESSION['gender'] == 3) {
+                                        } elseif ($_SESSION['cagender'] == 3) {
                                             echo "その他";
                                         }
                                         ?>
