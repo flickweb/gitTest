@@ -23,7 +23,6 @@ if (isset($_SESSION["mach"])) {
 
 $wo = array();
 $wo2 = array();
-$k = array();
 
 $sql = "SELECT caid from causer where realname = '$mach'";
 $res = mysqli_query($conn, $sql);
@@ -35,17 +34,17 @@ where caid = 4";
 $res2 = mysqli_query($conn, $sql2);
 $k2 = mysqli_fetch_assoc($res2);  
 
-$sql3 = "SELECT gender from causer where realname = '$mach'";
+$sql3 = "SELECT gender from causer where caid = $k[0]";
 $res3 = mysqli_query($conn, $sql3);
 $k3 = mysqli_fetch_assoc($res3);
 
-if($k3[0] = 1){
-    $g = "男";
-}if($k3[0] = 2){
-    $g = "女";
-}if($k3[0]){
-    $g = "その他";
-}
+// if($k3[0] == 1){
+//     $g = "男";
+// }if($k3[0] == 2){
+//     $g = "女";
+// }if($k3[0] == 3){
+//     $g = "その他";
+// }
     
 
 
@@ -165,7 +164,7 @@ $gender = $_SESSION['gender'];
                                         <h3>性別</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        <?php echo $g; ?>
+                                        <?php echo $k3[0]; ?>
                                     </div>
                                 </div>
                             </div>
