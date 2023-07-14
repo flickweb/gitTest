@@ -28,24 +28,17 @@ $sql = "SELECT caid from causer where realname = '$mach'";
 $res = mysqli_query($conn, $sql);
 $k = mysqli_fetch_array($res);
 
-$sql2 = "SELECT category.category from cacategory 
+//category.category
+$sql2 = "SELECT * from cacategory 
 inner join category on cacategory.ctnum = category.ctnum
-where caid = 4";
+where caid = $k[0]";
 $res2 = mysqli_query($conn, $sql2);
 $k2 = mysqli_fetch_assoc($res2);  
 
-$sql3 = "SELECT gender from causer where caid = $k[0]";
+$sql3 = "SELECT * from causer where caid = $k[0]";
 $res3 = mysqli_query($conn, $sql3);
 $k3 = mysqli_fetch_assoc($res3);
 
-// if($k3[0] == 1){
-//     $g = "男";
-// }if($k3[0] == 2){
-//     $g = "女";
-// }if($k3[0] == 3){
-//     $g = "その他";
-// }
-    
 
 
 
@@ -151,9 +144,8 @@ $gender = $_SESSION['gender'];
                                     <div class="infoBoxDetail">
                                         <?php 
                                         //var_dump($k2);
-                                        echo $k[0];
-                                        foreach ($k2 as $value) {
-                                            echo $value, "\n";
+                                        foreach ($res2 as $value1) {
+                                            echo $value1['category'], "<br>";
                                         } 
                                         ?><br>
                                     </div>
@@ -164,7 +156,18 @@ $gender = $_SESSION['gender'];
                                         <h3>性別</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        <?php echo $k3[0]; ?>
+                                        <?php
+                                        foreach ($res3 as $value2) {
+                                            if($value2['gender'] == 1){
+                                                $g = "男";
+                                            }if($value2['gender'] == 2){
+                                                $g = "女";
+                                            }if($value2['gender'] == 3){
+                                                $g = "その他";
+                                            }
+                                            echo $g, "\n";
+                                        } 
+                                        ?>
                                     </div>
                                 </div>
                             </div>
