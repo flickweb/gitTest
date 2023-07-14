@@ -151,7 +151,7 @@ $k = mysqli_fetch_array($res);
                         <input type="button" value="チャット" class="chat">
                     </div>
                     <div class="descBoxChat">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>メッセージのやり取りやビデオ通話ができます</p>
                     </div>
                 </div>
 
@@ -167,7 +167,7 @@ $k = mysqli_fetch_array($res);
                         <input type="button" value="予約" class="yoyaku">
                     </div>
                     <div class="descBox">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>予約ができます</p>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@ $k = mysqli_fetch_array($res);
                         <input type="button" value="得意分野の変更" class="profile">
                     </div>
                     <div class="descBox">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>カウンセラーの変更ができます</p>
                     </div>
                 </div>
             </div>

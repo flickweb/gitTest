@@ -23,6 +23,7 @@ if (isset($_SESSION["mach"])) {
 
 $wo = array();
 $wo2 = array();
+$k = array();
 
 $sql = "SELECT caid from causer where realname = '$mach'";
 $res = mysqli_query($conn, $sql);
@@ -30,28 +31,23 @@ $k = mysqli_fetch_array($res);
 
 $sql2 = "SELECT category.category from cacategory 
 inner join category on cacategory.ctnum = category.ctnum
-where caid = $k[0]";
+where caid = 4";
 $res2 = mysqli_query($conn, $sql2);
-$k2 = mysqli_fetch_assoc($res2);
-    
+$k2 = mysqli_fetch_assoc($res2);  
 
 $sql3 = "SELECT gender from causer where realname = '$mach'";
 $res3 = mysqli_query($conn, $sql3);
 $k3 = mysqli_fetch_assoc($res3);
 
-// if($k2[0] = 1){
+if($k3[0] = 1){
+    $g = "男";
+}if($k3[0] = 2){
+    $g = "女";
+}if($k3[0]){
+    $g = "その他";
+}
+    
 
-// }if($k2[0] = 1){
-
-// }if($k2[0] = 1){
-
-// }if($k2[0] = 1){
-
-// }if($k2[0] = 1){
-
-// }if($k2[0] = 1){
-
-// }
 
 
 if (empty($_SESSION['worries']) || in_array("1", $_SESSION['worries'])) {
@@ -155,6 +151,8 @@ $gender = $_SESSION['gender'];
                                     </div>
                                     <div class="infoBoxDetail">
                                         <?php 
+                                        //var_dump($k2);
+                                        echo $k[0];
                                         foreach ($k2 as $value) {
                                             echo $value, "\n";
                                         } 
@@ -167,7 +165,7 @@ $gender = $_SESSION['gender'];
                                         <h3>性別</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        
+                                        <?php echo $g; ?>
                                     </div>
                                 </div>
                             </div>
@@ -202,7 +200,7 @@ $gender = $_SESSION['gender'];
                             <input type="button" value="チャット" class="chat">
                         </div>
                         <div class="descBoxChat">
-                            <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                            <p>メッセージのやり取りやビデオ通話ができます</p>
                         </div>
                     </div>
                 
@@ -218,7 +216,7 @@ $gender = $_SESSION['gender'];
                         <input type="button" value="予約" class="yoyaku">
                     </div>
                     <div class="descBox">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>予約ができます</p>
                     </div>
                 </div>
             </div>
@@ -233,7 +231,7 @@ $gender = $_SESSION['gender'];
                         <input type="button" value="プロフィール" class="profile">
                     </div>
                     <div class="descBox">
-                        <p>部ふラ松割ヌニ必9村之ヨ年長ヌノヒネ庫球ヘ出74年ぐだ容要レでち。</p>
+                        <p>カウンセラーの変更ができます</p>
                     </div>
                 </div>
             </div>
