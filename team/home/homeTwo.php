@@ -33,12 +33,15 @@ $sql2 = "SELECT * from cacategory
 inner join category on cacategory.ctnum = category.ctnum
 where caid = $k[0]";
 $res2 = mysqli_query($conn, $sql2);
-$k2 = mysqli_fetch_assoc($res2);  
+$k2 = mysqli_fetch_assoc($res2);
 
 $sql3 = "SELECT * from causer where caid = $k[0]";
 $res3 = mysqli_query($conn, $sql3);
 $k3 = mysqli_fetch_assoc($res3);
 
+$query4 = "SELECT filepass from causer where caid = $k[0]";
+$res4 = mysqli_query($conn, $query4);
+$k4 = mysqli_fetch_array($res4);
 
 
 
@@ -85,7 +88,7 @@ $gender = $_SESSION['gender'];
 </head>
 
 <body>
-<nav class="navbar">
+    <nav class="navbar">
         <div class="navContainer">
             <div class="logoContainer">
                 <!-- <img src="assets/logoDemo.jpg" alt="logo" id="logo" /> -->
@@ -106,19 +109,6 @@ $gender = $_SESSION['gender'];
 
     <!-- LEFT START -->
 
-    <?php
-
-    $findCounselor = "SELECT causer.realname, causer.gender, cacategory.ctnum,  COUNT(*) AS match_count
-    FROM scategory
-    FROM scategory
-    INNER JOIN cacategory ON scategory.ctnum = cacategory.ctnum
-    INNER JOIN causer ON cacategory.caid = causer.caid
-    WHERE scategory.sid = $ssid
-    GROUP BY causer.caid
-    ORDER BY 
-    CASE WHEN scategory.ctnum IN (" . implode(',', $value) . ") THEN 0 ELSE 1 END,
-    match_count DESC";
-    ?>
 
 
     <div class="hero">
@@ -128,7 +118,12 @@ $gender = $_SESSION['gender'];
                     <h2 class="title">あなたのカウンセラー</h2>
                 </div>
                 <div class="contentBoxLeft">
-                    <div class="imageBoxLeft"></div>
+                    <div class="imageBoxLeft">
+                        <div class="profilePic">
+                            <img src="/team/img/<?php echo $k4[0]; ?>" width="180" height="180"
+                                style="border-radius: 50%;">
+                        </div>
+                    </div>
                     <div class="infoBoxLeft">
                         <div class="infoBoxName">
                             <h3>
@@ -142,14 +137,14 @@ $gender = $_SESSION['gender'];
                                         <h3>特徴</h3>
                                     </div>
                                     <div class="infoBoxDetail">
-                                        <?php 
+                                        <?php
                                         //var_dump($k2);
                                         foreach ($res2 as $value1) {
                                             echo $value1['category'], "<br>";
-                                        } 
+                                        }
                                         ?><br>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="infoBoxTwo">
                                     <div class="infoBoxDetailName">
@@ -158,15 +153,17 @@ $gender = $_SESSION['gender'];
                                     <div class="infoBoxDetail">
                                         <?php
                                         foreach ($res3 as $value2) {
-                                            if($value2['gender'] == 1){
+                                            if ($value2['gender'] == 1) {
                                                 $g = "男";
-                                            }if($value2['gender'] == 2){
+                                            }
+                                            if ($value2['gender'] == 2) {
                                                 $g = "女";
-                                            }if($value2['gender'] == 3){
+                                            }
+                                            if ($value2['gender'] == 3) {
                                                 $g = "その他";
                                             }
                                             echo $g, "\n";
-                                        } 
+                                        }
                                         ?>
                                     </div>
                                 </div>
@@ -189,28 +186,28 @@ $gender = $_SESSION['gender'];
         <!-- RIGHT START -->
 
         <div class="heroRight">
-            <div class="heroBoxRight"  onclick="location.href='../svichat/index.php'">
+            <div class="heroBoxRight" onclick="location.href='../svichat/index.php'">
                 <div class="iconBoxChat">
                     <div class="icon">
-                        
+
                         <i class="fa-regular fa-message fa-4x"></i>
-                        
+
                     </div>
                 </div>
-                    <div class="textBoxChat">
-                        <div class="titleBoxChat">
-                            <input type="button" value="チャット" class="chat">
-                        </div>
-                        <div class="descBoxChat">
-                            <p>メッセージのやり取りやビデオ通話ができます</p>
-                        </div>
+                <div class="textBoxChat">
+                    <div class="titleBoxChat">
+                        <input type="button" value="チャット" class="chat">
                     </div>
-                
+                    <div class="descBoxChat">
+                        <p>メッセージのやり取りやビデオ通話ができます</p>
+                    </div>
+                </div>
+
             </div>
-            <div class="heroBoxRight"  onclick="location.href='../calender/test2.php'">
+            <div class="heroBoxRight" onclick="location.href='../calender/test2.php'">
                 <div class="iconBox">
                     <div class="icon">
-                        <i class="fa-regular fa-calendar-check fa-4x"></i>                        
+                        <i class="fa-regular fa-calendar-check fa-4x"></i>
                     </div>
                 </div>
                 <div class="textBox">
@@ -238,6 +235,12 @@ $gender = $_SESSION['gender'];
                 </div>
             </div>
         </div>
+
+        <script>
+            if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
+            }
+        </script>
 </body>
 
 </html>
