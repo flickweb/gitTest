@@ -44,6 +44,13 @@
     background: linear-gradient(270deg, rgba(117, 188, 255, 1) 0%, rgba(62, 159, 252, 1) 100%);
 }
 
+.counselorContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 5%;
+}
+
 .button006 .btn {
     border-radius: 3px;
     text-decoration: none;
