@@ -1,0 +1,100 @@
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.container {
+    font-family: 'Noto Sans JP', sans-serif;
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none;
+}
+
+th {
+    height: 30px;
+    text-align: center;
+    border: 1px solid black;
+    margin: 20px;
+}
+
+td {
+    height: 80px;
+    width: 200px;
+    margin-left: 10px;
+    border: 1px solid black;
+}
+
+#cate {
+    text-align: center;
+}
+
+.today {
+    background: #FFFF66 !important;
+}
+
+th:nth-of-type(1), td:nth-of-type(1) {
+    color: red;
+}
+
+th:nth-of-type(7), td:nth-of-type(7) {
+    color: blue;
+}
+
+.mb-5 {
+    text-align: center;
+    /* position: relative; */
+    margin-bottom: 45px;
+}
+
+#ido {
+    position: absolute;
+    /* top: 50%; */
+    left: 50%;
+    transform: translate(90%,-50%);
+} 
+
+#ido1 {
+    position: absolute;
+    /* top: 50%; */
+    left: 27%;
+    /* transform: translate(90%,-50%); */
+    top: 4%;
+} 
+
+#button {
+    width: 150px;
+    float: right;
+    margin-bottom: 20px;
+}
+
+#ima {
+    width: 30px;
+    height: 30px;
+    
+}
+
+#sc {
+    text-align: center;
+}
+
+#bu {
+    height: 40px;
+    width: 80px;
+    margin-top: 10px;
+    border: none;
+    border: 1.4px solid skyblue;
+    border-radius: 10px;
+    background: transparent;
+    color: snow;
+    font-weight: bold;
+    background-color: skyblue;
+}
+
+#link {
+    background-color: #0066FF;
+    color: snow;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,0 +1,28 @@
+
+#del {
+    margin: 30px 300px 0 300px;
+    background-color: #c2edff;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#ido,#del {
+    text-align:center;
+}
+
+.Gbutton {
+    background-color: skyblue;
+    color: snow;
+    border: 2px solid skyblue;
+    width: 60px;
+    height: 40px;
+    border-radius:5px;
+}
+
+#bu {
+    background-color: skyblue;
+    color: snow;
+    padding: 10px;
+    border-radius:5px;
+    text-decoration: none;
+}

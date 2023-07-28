@@ -1,0 +1,22 @@
+
+#yo {
+    text-align: center;
+    background-color: #c2edff;
+    margin: 30px 300px 0 300px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+#ido {
+    text-align: center;
+}
+
+#bu {
+    background-color: skyblue;
+    color: snow;
+    border: 2px solid skyblue;
+    margin-top: 20px;
+    width: 80px;
+    height: 50px;
+    border-radius:5px;
+}

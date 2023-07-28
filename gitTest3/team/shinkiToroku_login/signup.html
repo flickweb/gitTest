@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Signup</title>
+</head>
+<body>
+
+	<style type="text/css">
+	
+		#text{
+	
+			height: 25px;
+			border-radius: 5px;
+			padding: 4px;
+			border: solid thin #aaa;
+			width: 100%;
+		}
+	
+		#button{
+	
+			padding: 10px;
+			width: 50%;
+			color: white;
+			background-color: lightblue;
+			border: none;
+			text-align: center;
+			text-decoration: none;
+		}
+	
+		#box{
+			background-color: whitesmoke;
+			margin: 100px auto;
+			width: 400px;
+			display: flex;
+			/* padding: 20px; */
+			flex-direction: column;
+			border-radius: 5px;
+			box-shadow: 0 2px 25px rgb(0 0 0 / 20%);
+		}
+	
+		h1{
+			/* padding :10px 5px 5px 5px; */
+			padding: 35px 35px 0 35px;
+			font-size: 2em;
+			font-weight: 300;
+			margin: 0;
+		}
+	
+		.content{
+			/* padding: 5px 5px 5px 10px;  */
+			padding: 35px;
+			text-align: center;
+		}
+	
+		.input-field{
+			padding: 0px;
+		}
+	
+		.input-field input{
+		background-color: whitesmoke;
+		font-size: 16px;
+		display: block;
+		font-family: 'Rubik', sans-serif;
+		width: 100%;
+		padding: 10px 1px;
+		border: 0;
+		border-bottom: 1px solid #747474;
+		outline: none;
+		transition: all .2s;
+		}
+	
+		.action{
+		display: flex;
+		flex-wrap: nowrap;
+		/* -webkit-box-orient: horizontal;
+		-webkit-box-direction: normal;
+		flex-direction: row; */
+	}
+		</style>
+
+	<!-- <div id="box">
+		
+		<form method="post">
+			<div style="font-size: 20px;margin: 10px;color: white;">Signup</div>
+
+			<input id="text" type="text" name="user_name"><br><br>
+			<input id="text" type="password" name="password"><br><br>
+
+			<input id="button" type="submit" value="Signup"><br><br>
+
+			<a href="login.php">Click to Login</a><br><br>
+		</form>
+	</div> -->
+
+
+	<div id="box">
+		
+		<form method="post">
+			<h1>サインアップ</h1>
+            <div class="content">
+                <div class="input-field">
+			        <input type="text" type="text" name="user_name" placeholder="ユーザー"><br><br>
+			    </div>
+                <div class="input-field">
+                    <input type="text" type="password" name="password" placeholder="パスワード"><br><br>
+                </div>
+            </div>
+
+            <div class="action">
+                <input id="button" type="submit" value="新規登録">
+                <a id="button" href="login.html">ログインページへ</a>
+            
+            </div>
+		</form>
+	</div>
+	
+</body>
+</html>

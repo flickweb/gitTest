@@ -62,7 +62,7 @@ video {
 
 .p2p-data .messages {
   background-color: #eee;
-  height: 150px;
+  height: 210px;
   width: 500px;
   padding: 8px;
   margin-top: 0;
@@ -70,12 +70,31 @@ video {
   word-break: break-all;
   white-space: pre-wrap;
   font-family: sans-serif;
+  background-color: rgba(102, 252, 190, 0.642);
+}
+
+.p{
+  display: all;
+  /* background-color: rgba(134, 20, 175, 0.642); */
+  font-weight: bolder;
+  font-size: 1.2rem;
+  height: 5px
+}
+
+.area{
+  width:300px;
+  height:50px;
+}
+
+.bt{
+  position: relative; /* 今の位置を基準 */
+  bottom: 10px; /* 上から10px */
 }
 
 .btn{
   text-align:center;
   position: relative; /* 今の位置を基準 */
-  top: 90px;
+  top: 120px;
 }
 
 pre {
