@@ -8,9 +8,19 @@ define( "DB_CHARSET", "utf8mb4" );
 session_start();
 
 //$idの中身をセッションで持ってきたidに変更してください
-echo $_SESSION["mach"];
-
 $id = $_SESSION["Sid"];
+
+if(isset($_POST["CAid"])){
+  $CAid = $_POST["CAid"];
+}else{
+  
+}
+
+
+//追加
+$mach = $_SESSION['mach'];
+$_SESSION['mach'] = $mach;
+//
 
 $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 if( ! $instance -> connect_error ) {
@@ -31,6 +41,8 @@ if( ! $instance -> connect_error ) {
 
 $param = $result["result"];
 
+printf($CAid);
+
 $name = $param[0]["name"];
 
 $param2 = 'S'.$param[0]["Sid"];
@@ -38,7 +50,6 @@ $param2 = 'S'.$param[0]["Sid"];
 $param_json = json_encode($param2); //JSONエンコード
 
 $param_json2 = json_encode($name); //JSONエンコード
-
 
 ?>
 
@@ -66,16 +77,21 @@ $param_json2 = json_encode($name); //JSONエンコード
           
           <img src="mic_off.jpg" id="micimg" class="mic" alt="マイク オン:オフ" title="マイク オン:オフ" width="100" height="100">
           <p>Your ID: <span id="js-local-id"></span></p>
-          <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id">
+          <?php if(isset($CAid)){ ?>
+            <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id" value="CA<?= $CAid ?>">
+          <?php }else{ ?>
+            <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id">
+          <?php } ?>
           <button class="A" id="js-connect-trigger">Connect</button>
           <button id="js-close-trigger">カウンセリングを終了する</button>
         </div>
         <div class=”line__contents>
+          <p class="p">         ↓にチャットが表示されます</p>
           <pre  class="messages" scroll id="js-messages"></pre>
           <!-- <pre class=”line__contents scroll id="js-messages"></pre> -->
           <!-- <input type="text" id="js-local-text"> -->
-          <textarea type="text" id="js-local-text"></textarea>
-          <button id="js-send-trigger">送信</button>
+          <textarea class="area" type="text" id="js-local-text"></textarea>
+          <button class="bt" id="js-send-trigger">送信</button>
         </div>
 
         <div class="btn">
@@ -84,11 +100,6 @@ $param_json2 = json_encode($name); //JSONエンコード
           <button class="btn" type="submit" id="prev">ホームに戻る</button>
           </form>
         </div>
-
-        <!-- <div class="box">
-          <p>表示したい文字列</p>
-        </div> -->
-
       </div>
       <p class="meta" id="js-meta"></p>
     </div>

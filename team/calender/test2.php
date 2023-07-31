@@ -14,13 +14,13 @@
     //
 
     $id = $_SESSION["Sid"];
-    $_SESSION['id'] = $id;
+    $_SESSION['Sid'] = $id;
 
     $instance1 = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 
     if( ! $instance1 -> connect_error ) {
         $instance1 -> set_charset(DB_CHARSET);
-        $sql = "SELECT s.Sid,y.data,ca.username,y.time
+        $sql = "SELECT s.Sid,y.data,ca.username,y.time,y.CAid
                 FROM Suser as s
                 JOIN yoyaku as y ON (s.Sid = y.Sid)
                 JOIN CAuser as ca ON (y.CAid = ca.CAid)
@@ -41,6 +41,7 @@
             $data = $re["data"];
             $name = $re["username"];
             $time = $re["time"];
+            $CAid = $re["CAid"];
     
             $dai[] = $data;
             $nam[] = $name;
@@ -135,14 +136,17 @@
             if($today == $date && $dai[$i] == $date) {
                 $week .= '<td class="today">';
                 $week .= '<div>'.$day.'</div>';
-                $week .= '<div id="sc">'.'<div>'.$nam[$i].'</div>'.'<div>'.$tim[$i].'</div>'.'</div>';
-                $week .= '<form method="POST" name="a_form" action="syocale.php">'.'<input type="hidden" name="data" value="'.$data.'">'.'<button type="submit" id="bu">'.'詳細'.'</button>'.'</form>';
+                $week .= '<div id="sc">'.'<div>'.$nam[$i].'</div>';
+                $week .= '<div>'.'ID: CA'.$CAid.'</div>'.'<div>'.$tim[$i].'</div>'.'</div>';
+                $week .= '<form method="POST" name="b_form" action="../svichat/index.php">'.'<input type="hidden" name="CAid" value="'.$CAid.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'チャット画面へ'.'</button>'.'</div>'.'</form>';
+                $week .= '<form method="POST" name="a_form" action="syousaidate.php">'.'<input type="hidden" name="data" value="'.$dai[$i].'">'.'<input type="hidden" name="Sid" value="'.$id.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'キャンセル'.'</button>'.'</div>'.'</form>';
                 $a = 1;
             } else if($dai[$i] == $date) {
                 $week .= '<td>';
-                $week .= $day;
-                $week .= '<div id="sc">'.'<div>'.$nam[$i].'</div>'.'<div>'.$tim[$i].'</div>'.'</div>';
-                $week .= '<form method="POST" name="a_form" action="syocale.php">'.'<input type="hidden" name="data" value="'.$data.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'詳細'.'</button>'.'</div>'.'</form>';
+                $week .= '<div>'.$day.'</div>';
+                $week .= '<div id="sc">'.'<div>'.$nam[$i].'</div>';
+                $week .= '<div>'.'ID: CA'.$CAid.'</div>'.'<div>'.$tim[$i].'</div>'.'</div>';
+                $week .= '<form method="POST" name="a_form" action="syousaidate.php">'.'<input type="hidden" name="data" value="'.$dai[$i].'">'.'<input type="hidden" name="Sid" value="'.$id.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'キャンセル'.'</button>'.'</div>'.'</form>';
                 $a = 1;
             }
         }
@@ -185,9 +189,19 @@
     <body>
         <div class="container">
             <div class="mb-5">
-                <a href="?ym=<?php echo $prev; ?>">&lt;</a> 
+                <div id="ido1">
+                    <form action="../home/homeTwo.php" method="POST">
+                        <button type="submit" id="button">
+                            <div>
+                                <img src="images/home.jpg" alt="ホーム" id="ima">
+                            </div>ホームに戻る
+                        </button>
+                    </form>
+                </div>
+
+                <a href="?ym=<?php echo $prev; ?>" id="link">&lt;</a> 
                 <?php echo $html_title; ?> 
-                <a href="?ym=<?php echo $next; ?>">&gt;</a>
+                <a href="?ym=<?php echo $next; ?>" id="link">&gt;</a>
                 <div id="ido">
                     <form action="schedulekanri.php" method="POST">
                         <button type="submit" id="button">
