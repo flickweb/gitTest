@@ -138,7 +138,6 @@
                 $week .= '<div>'.$day.'</div>';
                 $week .= '<div id="sc">'.'<div>'.$nam[$i].'</div>';
                 $week .= '<div>'.'ID: CA'.$CAid.'</div>'.'<div>'.$tim[$i].'</div>'.'</div>';
-                $week .= '<form method="POST" name="b_form" action="../svichat/index.php">'.'<input type="hidden" name="CAid" value="'.$CAid.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'チャット画面へ'.'</button>'.'</div>'.'</form>';
                 $week .= '<form method="POST" name="a_form" action="syousaidate.php">'.'<input type="hidden" name="data" value="'.$dai[$i].'">'.'<input type="hidden" name="Sid" value="'.$id.'">'.'<div id="sc">'.'<button type="submit" id="bu">'.'キャンセル'.'</button>'.'</div>'.'</form>';
                 $a = 1;
             } else if($dai[$i] == $date) {

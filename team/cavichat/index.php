@@ -31,8 +31,6 @@ $param = $result["result"];
 
 $param2 = 'CA'.$param[0]["CAid"];
 
-print($param2);
-
 $param_json = json_encode($param2); //JSONエンコード
 
 ?>
@@ -65,16 +63,17 @@ $param_json = json_encode($param2); //JSONエンコード
           <button id="js-close-trigger">カウンセリングを終了する</button>
         </div>
         <div class=”line__contents scroll>
+        　<p class="p">　　　　　　↓にチャットが表示されます</p>
           <pre  class="messages" id="js-messages"></pre>
           <!-- <pre class=”line__contents scroll id="js-messages"></pre> -->
-          <textarea type="text" id="js-local-text"></textarea>
-          <button id="js-send-trigger">送信</button>
+          <textarea class="area"　type="text" id="js-local-text"></textarea>
+          <button class="bt"　id="js-send-trigger">送信</button>
           <!-- /team/home/home.php -->
         </div>
         <div class="btn">
           <form action="/team/cahome/cahome.php" method="post">
-          <!-- <button type="submit" id="next">&laquo; -->
-          <button class="btn" type="submit" id="prev">ホームに戻る</button>
+            <!-- <button type="submit" id="next">&laquo; -->
+            <button class="btn" type="submit" id="prev">ホームに戻る</button>
           </form>
         </div>
       </div>

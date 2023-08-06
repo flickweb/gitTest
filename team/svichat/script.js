@@ -116,7 +116,7 @@ const Peer = window.Peer;
     closeTrigger.addEventListener('click', () => mediaConnection.close(true));
 
     dataConnection.once('open', async () => {
-      messages.textContent += `ここにチャットが表示されます\n`;
+      messages.textContent += `　　　　接続開始\n`;
 
       //追加
       $(function() {
@@ -129,11 +129,12 @@ const Peer = window.Peer;
     });
 
     dataConnection.on('data', data => {
-      messages.textContent += `カウンセラー: ${data}\n`;
+      messages.textContent += `カウンセラー:\n`;
+      messages.textContent += `${data}\n`;
     });
 
     dataConnection.once('close', () => {
-      messages.textContent += `=== DataConnection has been closed ===\n`;
+      messages.textContent += `カウンセリングが終了しました\n`;
       sendTrigger.removeEventListener('click', onClickSend);
     });
 
@@ -146,7 +147,8 @@ const Peer = window.Peer;
       const data = localText.value;
       dataConnection.send(data);
 
-      messages.textContent += `${name}: ${data}\n`;
+      messages.textContent += `${name}: \n`;
+      messages.textContent += `${data}\n`;
       localText.value = '';
     }
   });
@@ -162,17 +164,18 @@ const Peer = window.Peer;
   // Register connected peer handler
   peer.on('connection', dataConnection => {
     dataConnection.once('open', async () => {
-      messages.textContent += `ここにチャットが表示されます\n`;
+      messages.textContent += `　　　　接続開始\n`;
 
       sendTrigger.addEventListener('click', onClickSend);
     });
 
     dataConnection.on('data', data => {
-      messages.textContent += `Remote: ${data}\n`;
+      messages.textContent += `カウンセラー:\n`;
+      messages.textContent += `${data}\n`;
     });
 
     dataConnection.once('close', () => {
-      messages.textContent += `=== DataConnection has been closed ===\n`;
+      messages.textContent += `カウンセリングが終了しました\n`;
       sendTrigger.removeEventListener('click', onClickSend);
     });
 
@@ -185,7 +188,8 @@ const Peer = window.Peer;
       const data = localText.value;
       dataConnection.send(data);
 
-      messages.textContent += `You: ${data}\n`;
+      messages.textContent += `${name}: \n`;
+      messages.textContent += `${data}\n`;
       localText.value = '';
     }
   });

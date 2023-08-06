@@ -4,6 +4,8 @@ session_start();
 
 	include ("../dbConnect.php");
 	include("../functionsCA.php");
+
+// echo $_SESSION['a'];
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
 		//something was posted
@@ -74,7 +76,7 @@ session_start();
 		padding: 10px;
         width: 50%;
         color: white;
-        background-color: lightblue;
+        background-color: rgb(255, 145, 0);
         border: none;
         text-align: center;
         text-decoration: none;

@@ -161,15 +161,6 @@ nav.navbar .navContainer .nav-links .ulInside li .lang:hover{
     /* margin: 3% 20% 0% 20%; */
     text-align: center;
 }
-.hero .heroLeft .heroBoxLeft .contentBoxLeft .imageBoxLeft .profilePic{
-    width: 90%;
-    /* height: 100%; */
-    object-fit: cover;
-    overflow: hidden;
-    margin-left: 10%;
-    margin-bottom: 15%;
-}
-
 
 .hero .heroLeft .heroBoxLeft .contentBoxLeft .infoBoxLeft{
     display: flex;
@@ -326,7 +317,6 @@ nav.navbar .navContainer .nav-links .ulInside li .lang:hover{
     background-color: green;
     margin: 2% 0% 2% 1%;
     border-radius: 15px;
-    cursor: pointer;
 }
 
 .hero .heroRight .heroBoxRight:hover{

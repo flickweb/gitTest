@@ -24,8 +24,8 @@
       $instance -> close();
     }
 
-  $Sid = $_SESSION["id"];
-  $_SESSION['id'] = $Sid;
+  $Sid = $_SESSION["Sid"];
+  $_SESSION['Sid'] = $Sid;
 
   $da = date('Y-m-d');
 
@@ -46,14 +46,14 @@
     <body>
         <div id="ido">
 
-            <div>カウンセラーを選択してください</div><br>
+            <div id="ca">カウンセラーを選択してください</div><br>
 
 
             <input type="hidden" name="Sid" id="Sid" value="<?= $Sid ?>">
               
             <form action="schedulekanri2.php" method="POST">
                 <div>
-                    <select name="cuser">
+                    <select name="cuser" id="cuser">
                         <?php foreach($result["result"] as $re): ?>
                             <option><?= $re["username"]?></option>
                         <?php endforeach ?>    
@@ -61,10 +61,10 @@
                     </select>
                 </div><br>
 
-                <div>予約の日時を入力してください</div><br>
+                <div id="day">予約の日時を入力してください</div><br>
                 
                 <input type="date" name="date" id="date" min=<?= $da ?> required></input><br><br>
-                <select name="hou">
+                <select name="hou" id="hou">
                     <?php 
                         for($i = 9; $i <= 23; $i++) {
                             echo "<option>{$i}</option>";
@@ -72,7 +72,7 @@
                     ?>
                 </select>時
 
-                <select name="mini">
+                <select name="mini" id="mini">
                     <?php 
                         for($i = 0; $i <= 50; $i+=10) {
                             echo "<option>{$i}</option>";
@@ -80,18 +80,18 @@
                     ?>
                 </select>分<br><br>
 
-                <div>ご希望の連絡方法を選択してください</div><br>
-                <select name="contact">
+                <div id="con">ご希望の連絡方法を選択してください</div><br>
+                <select name="contact" id="contact">
                     <option value="0">チャット</option>
                     <option value="1">通話</option>
                     <option value="2">ビデオ通話</option>
                 </select><br><br>
 
-                <button type="submit">決定</button><br><br>
+                <button type="submit" id="bu">決定</button><br><br>
 
             </form>
 
-            <a href="test2.php">戻る</a>
+            <a href="test2.php" id="a">戻る</a>
 
         </div>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

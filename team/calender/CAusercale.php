@@ -8,6 +8,9 @@
     define( "DB_NAME", "studb" );
     define( "DB_CHARSET", "utf8mb4" );
 
+    $id = $_SESSION["CAid"];
+    $_SESSION['CAid'] = $id;
+
     $instance1 = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
 
     if( ! $instance1 -> connect_error ) {
@@ -15,7 +18,7 @@
         $sql = "SELECT y.CAid,s.name,y.data,y.time,y.connect
                 FROM Suser as s
                 JOIN yoyaku as y ON(s.Sid = y.Sid)
-                WHERE y.CAid = 1;";
+                WHERE y.CAid = '$id';";
         if($kekka = $instance1 -> query($sql)){
             //SQLが成功した時の処理
             $result["status"] = true;
@@ -27,16 +30,18 @@
         $instance1 -> close();
     }
 
-    foreach($result["resu"] as $re) {
-        $name = $re["name"];
-        $data = $re["data"];
-        $time = $re["time"];
-        $conn = $re["connect"];
+    if(isset($result["resu"])){
+        foreach($result["resu"] as $re) {
+            $name = $re["name"];
+            $data = $re["data"];
+            $time = $re["time"];
+            $conn = $re["connect"];
 
-        $nam[] = $name;
-        $dai[] = $data;
-        $tim[] = $time;
-        $con[] = $conn;
+            $nam[] = $name;
+            $dai[] = $data;
+            $tim[] = $time;
+            $con[] = $conn;
+        }
     }
 
     for($u = 0; $u < 31; $u++) {
@@ -188,6 +193,15 @@
     <body>
         <div class="container">
             <div class="mb-5">
+                <div id="ido1">
+                    <form action="../cahome/cahome.php" method="POST">
+                        <button type="submit" id="button">
+                            <div>
+                                <img src="images/home.jpg" alt="ホーム" id="ima">
+                            </div>ホームに戻る
+                        </button>
+                    </form>
+                </div>
                 <a href="?ym=<?php echo $prev; ?>">&lt;</a> 
                 <?php echo $html_title; ?> 
                 <a href="?ym=<?php echo $next; ?>">&gt;</a>

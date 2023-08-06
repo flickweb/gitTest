@@ -38,7 +38,7 @@ echo '</p>';
 $query = "UPDATE CAuser
           SET gender = $g
           WHERE CAid = $caid";
-mysqli_query($conn, $query);
+$res = mysqli_query($conn, $query);
 
 $newCAid = mysqli_insert_id($conn);
 $_SESSION['a'] = $newCAid;

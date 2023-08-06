@@ -20,6 +20,7 @@ const Peer = window.Peer;
   
   console.log(param);
   const id = param;
+  // const name = param2;
 
   meta.innerText = `
     UA: ${navigator.userAgent}
@@ -59,12 +60,12 @@ const Peer = window.Peer;
       if(i == 0){
         var videoTrack = localStream.getVideoTracks()[0];
         videoTrack.enabled = true;
-        document.getElementById('cameraimg').src = 'camera_off.jpg';
+        document.getElementById('cameraimg').src = 'camera.jpg';
         i = 1;
       }else if(i == 1){
         var videoTrack = localStream.getVideoTracks()[0];
         videoTrack.enabled = false;
-        document.getElementById('cameraimg').src = 'camera.jpg';
+        document.getElementById('cameraimg').src = 'camera_off.jpg';
         i = 0;
       }
     });
@@ -75,12 +76,12 @@ const Peer = window.Peer;
       if(j == 0){
         var audioTrack = localStream.getAudioTracks()[0];
         audioTrack.enabled = true;
-        document.getElementById('micimg').src = 'mic_off.jpg';
+        document.getElementById('micimg').src = 'mic.jpg';
         j = 1;
       }else if(j == 1){
         var audioTrack = localStream.getAudioTracks()[0];
         audioTrack.enabled = false;
-        document.getElementById('micimg').src = 'mic.jpg';
+        document.getElementById('micimg').src = 'mic_off.jpg';
         j = 0;
       }
     });
@@ -115,7 +116,7 @@ const Peer = window.Peer;
     closeTrigger.addEventListener('click', () => mediaConnection.close(true));
 
     dataConnection.once('open', async () => {
-      messages.textContent += `ここにチャットが表示されます\n`;
+      messages.textContent += `　　　　接続開始\n`;
 
       //追加
       $(function() {
@@ -128,11 +129,12 @@ const Peer = window.Peer;
     });
 
     dataConnection.on('data', data => {
-      messages.textContent += `生徒: ${data}\n`;
+      messages.textContent += `カウンセラー:\n`;
+      messages.textContent += `${data}\n`;
     });
 
     dataConnection.once('close', () => {
-      messages.textContent += `=== DataConnection has been closed ===\n`;
+      messages.textContent += `カウンセリングが終了しました\n`;
       sendTrigger.removeEventListener('click', onClickSend);
     });
 
@@ -145,13 +147,12 @@ const Peer = window.Peer;
       const data = localText.value;
       dataConnection.send(data);
 
-      messages.textContent += `カウンセラー: ${data}\n`;
+      messages.textContent += `${name}: \n`;
+      messages.textContent += `${data}\n`;
       localText.value = '';
     }
   });
 
-
-  
 
   // peer.once('open', id => (localId.textContent = id));
   console.log(id);
@@ -163,17 +164,18 @@ const Peer = window.Peer;
   // Register connected peer handler
   peer.on('connection', dataConnection => {
     dataConnection.once('open', async () => {
-      messages.textContent += `=== DataConnection has been opened ===\n`;
+      messages.textContent += `　　　　接続開始\n`;
 
       sendTrigger.addEventListener('click', onClickSend);
     });
 
     dataConnection.on('data', data => {
-      messages.textContent += `Remote: ${data}\n`;
+      messages.textContent += `カウンセラー:\n`;
+      messages.textContent += `${data}\n`;
     });
 
     dataConnection.once('close', () => {
-      messages.textContent += `=== DataConnection has been closed ===\n`;
+      messages.textContent += `カウンセリングが終了しました\n`;
       sendTrigger.removeEventListener('click', onClickSend);
     });
 
@@ -186,7 +188,8 @@ const Peer = window.Peer;
       const data = localText.value;
       dataConnection.send(data);
 
-      messages.textContent += `You: ${data}\n`;
+      messages.textContent += `${name}: \n`;
+      messages.textContent += `${data}\n`;
       localText.value = '';
     }
   });

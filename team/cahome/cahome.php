@@ -156,7 +156,7 @@ $k = mysqli_fetch_array($res);
                 </div>
 
             </div>
-            <div class="heroBoxRight" onclick="location.href='../calendar/schedulekanri.php'">
+            <div class="heroBoxRight" onclick="location.href='../calender/CAusercale.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x"></i>
@@ -164,10 +164,10 @@ $k = mysqli_fetch_array($res);
                 </div>
                 <div class="textBox">
                     <div class="titleBox">
-                        <input type="button" value="予約" class="yoyaku">
+                        <input type="button" value="スケジュール" class="yoyaku">
                     </div>
                     <div class="descBox">
-                        <p>予約ができます</p>
+                        <p>スケジュールを確認できます</p>
                     </div>
                 </div>
             </div>
@@ -182,7 +182,7 @@ $k = mysqli_fetch_array($res);
                         <input type="button" value="得意分野の変更" class="profile">
                     </div>
                     <div class="descBox">
-                        <p>カウンセラーの変更ができます</p>
+                        <p>得意分野を変更できます</p>
                     </div>
                 </div>
             </div>

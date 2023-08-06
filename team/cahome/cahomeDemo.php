@@ -157,7 +157,7 @@ $k = mysqli_fetch_array($res);
                 </div>
 
             </div>
-            <div class="heroBoxRight" onclick="location.href='../calendar/schedulekanri.php'">
+            <div class="heroBoxRight" onclick="location.href='../calendar/CAusercale.php'">
                 <div class="iconBox">
                     <div class="icon">
                         <i class="fa-regular fa-calendar-check fa-4x"></i>

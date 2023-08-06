@@ -31,7 +31,7 @@ td {
 }
 
 .today {
-    background: orange !important;
+    background: #FFFF66 !important;
 }
 
 th:nth-of-type(1), td:nth-of-type(1) {
@@ -53,6 +53,14 @@ th:nth-of-type(7), td:nth-of-type(7) {
     /* top: 50%; */
     left: 50%;
     transform: translate(90%,-50%);
+} 
+
+#ido1 {
+    position: absolute;
+    /* top: 50%; */
+    left: 27%;
+    /* transform: translate(90%,-50%); */
+    top: 4%;
 } 
 
 #button {
@@ -82,4 +90,11 @@ th:nth-of-type(7), td:nth-of-type(7) {
     color: snow;
     font-weight: bold;
     background-color: skyblue;
+}
+
+#link {
+    background-color: #0066FF;
+    color: snow;
+    padding: 10px;
+    border-radius: 10px;
 }

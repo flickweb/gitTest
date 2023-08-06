@@ -11,9 +11,9 @@ session_start();
 
 
 if (!isset($_SESSION['username'], $_SESSION['pass'], $_SESSION['Sid'])) {
-    echo "ログインしてください";
+    // echo "ログインしてください";
 } else {
-    echo "ようこそ" . $_SESSION['username'] . "さん";
+    // echo "ようこそ" . $_SESSION['username'] . "さん";
 }
 
 if (isset($_POST['caman'])) {

@@ -7,8 +7,12 @@
     define( "DB_CHARSET", "utf8mb4" );
 
     if(!empty($_GET)) {
-        $Sid = $_GET["Sid"];
+        $Sid2 = $_GET["Sid"];
         $data = $_GET["data"];
+
+        $Sid = $_SESSION["Sid"];
+        $_SESSION['Sid'] = $Sid;
+
 
         $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
         if( ! $instance -> connect_error ) {

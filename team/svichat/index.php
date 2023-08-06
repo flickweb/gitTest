@@ -10,13 +10,6 @@ session_start();
 //$idの中身をセッションで持ってきたidに変更してください
 $id = $_SESSION["Sid"];
 
-if(isset($_POST["CAid"])){
-  $CAid = $_POST["CAid"];
-}else{
-  
-}
-
-
 //追加
 $mach = $_SESSION['mach'];
 $_SESSION['mach'] = $mach;
@@ -40,8 +33,6 @@ if( ! $instance -> connect_error ) {
 
 
 $param = $result["result"];
-
-printf($CAid);
 
 $name = $param[0]["name"];
 
@@ -77,11 +68,7 @@ $param_json2 = json_encode($name); //JSONエンコード
           
           <img src="mic_off.jpg" id="micimg" class="mic" alt="マイク オン:オフ" title="マイク オン:オフ" width="100" height="100">
           <p>Your ID: <span id="js-local-id"></span></p>
-          <?php if(isset($CAid)){ ?>
-            <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id" value="CA<?= $CAid ?>">
-          <?php }else{ ?>
-            <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id">
-          <?php } ?>
+          <input type="text" placeholder="ここに相手のIDを入力" id="js-remote-id">
           <button class="A" id="js-connect-trigger">Connect</button>
           <button id="js-close-trigger">カウンセリングを終了する</button>
         </div>

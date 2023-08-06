@@ -39,7 +39,7 @@ if (isset($_POST['caman'])) {
 
 <body>
     <form method="post" action="/team/diagnose/diagnose1111.php">
-    <h2>得意なテーマを選択してください(複数選択可)</h2><br>
+    <h2>悩みを選択してください(複数選択可)</h2><br>
         <label class="ECM_CheckboxInput">
             <input class="ECM_CheckboxInput-Input" type="checkbox" name="worries[]" value="1" 
             <?php if(empty($_SESSION['worries'])||in_array("1",$_SESSION['worries'])) echo 'checked'?>>

@@ -18,9 +18,9 @@ session_start();
 			//read from database
 			 $query = "SELECT * FROM Suser WHERE name = '$user_name' limit 1";
 			 $result = mysqli_query($conn, $query);
-             $checkCTNUM = "SELECT hasLoggedIn FROM Suser WHERE name = '$user_name' limit 1";
+             $checkCTNUM = "SELECT ctnum FROM Suser WHERE name = '$user_name' limit 1";
              $resultCTNUM = mysqli_query($conn, $checkCTNUM);
-             $resutlRow= mysqli_fetch_array($resultCTNUM, MYSQLI_ASSOC);
+
             
 
 			if($result)
@@ -39,16 +39,14 @@ session_start();
                         $_SESSION['pass'] = $user_data['pass'];
                         $_SESSION['gender'] = $user_data['gender'];
 
-                        
+
                         #if udah isi, lgsg ke home
-                        if($resutlRow['hasLoggedIn'] === "0"){
-                            echo $resutlRow['hasLoggedIn'];
-                            mysqli_query($conn, "UPDATE Suser SET hasLoggedIn = 1 WHERE name = '$user_name'");
-                            header("Location: ../diagnose/diagnose1.php");
-                        }
-                        else{
+                        if($resultCTNUM && mysqli_num_rows($resultCTNUM) > 0){
                             header("Location: ../home/homeTwo.php");
                         }
+
+						header("Location: ../diagnose/diagnose1.php");
+						
 					}
 				}
 			}
@@ -87,7 +85,7 @@ session_start();
 		padding: 10px;
         width: 50%;
         color: white;
-        background-color: lightblue;
+        background-color: rgb(255, 145, 0);
         border: none;
         text-align: center;
         text-decoration: none;

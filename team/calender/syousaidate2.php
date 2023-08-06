@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="css/syousaidate2.css">
+
 <?php
 
     define( "DB_HOST", "localhost" );
@@ -8,7 +10,8 @@
 
     session_start();
 
-    $Sid = $_POST["Sid"];
+    $Sid = $_SESSION["Sid"];
+    $_SESSION['Sid'] = $Sid;
     $date = $_POST["data"];
 
     //echo $Sid,$date;
@@ -46,14 +49,18 @@
     </head>
     <body>
         <?php if($st == 1): ?>
-            <div>削除が完了しました</div>
+            <div id="yo">削除が完了しました</div>
             <form action="test2.php">
-                <button type="submit">戻る</button>
+                <div id="ido">
+                    <button type="submit" id="bu">戻る</button>
+                </div>
             </form>
         <?php else: ?>
-            <div>削除が失敗しました</div>
+            <div id="yo">削除が失敗しました</div>
             <form action="test2.php">
-                <button type="submit">戻る</button>
+                <div id="ido">
+                    <button type="submit" id="bu">戻る</button>
+                </div>
             </form>
         <?php endif ?>    
     </body>

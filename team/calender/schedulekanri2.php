@@ -1,3 +1,4 @@
+
 <?php
     session_start();
 
@@ -47,8 +48,8 @@
         $num = $re["CAid"];
     }
 
-    $sid = $_SESSION["id"];
-    $_SESSION['id'] = $sid;
+    $sid = $_SESSION["Sid"];
+    $_SESSION['Sid'] = $sid;
 
     $instance = new mysqli( DB_HOST, DB_USER, DB_PASS, DB_NAME );
     if( ! $instance -> connect_error ) {
@@ -78,18 +79,23 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/schedulekanri2.css">
         <title>予約のページ</title>
     </head>
     <body>
         <?php if($r == 1): ?>
             <form action="test2.php" method="POST">
-                <div>予約が完了しました</div>
-                <button type="submit">トップに戻る</button>
+                <div id="yo">予約が完了しました</div>
+                <div id="ido">
+                    <button type="submit" id="bu">トップに戻る</button>
+                </div>
             </form>
         <?php else : ?>
             <form action="schedulekanri.php" method="POST">
-                <div>予約が失敗しました。</div>
-                <button type="submit">予約画面に戻る</button>
+                <div id="yo">予約が失敗しました。</div>
+                <div id="ido">
+                    <button type="submit" id="bu">予約画面に戻る</button>
+                </div>
             </form>
         <?php endif ?>    
     </body>
